@@ -1,0 +1,13 @@
+Laravel Commands:
+Create a new project —> laravel new <name>
+Run project —> php artisan serve
+Migrate tables info —> php artisan migrate
+Reset and re-run all migrations —> php artisan migrate:refresh
+
+
+MySql Commands:
+Show dbs —> show databases;
+Login to db —> mysql -u <username> -p
+Create new database —> create database <name>;
+To use db —> use <name>;
+View tables —> show tables;
