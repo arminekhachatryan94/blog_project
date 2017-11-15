@@ -15,6 +15,7 @@ php artisan migrate:reset
 php artisan make:model <Name> -m —> create a model and migration for that model
 php artisan make:model <Name> -c —> create a model and controller for that model
 composer dump-autoload —> refresh; dump all autoload files
+php artisan make:controller <NameController>
 
 MySql Commands:
 show databases; —> show dbs
