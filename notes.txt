@@ -1,13 +1,24 @@
 Laravel Commands:
-Create a new project —> laravel new <name>
-Run project —> php artisan serve
-Migrate tables info —> php artisan migrate
-Reset and re-run all migrations —> php artisan migrate:refresh
-
+laravel new <name> —> create a new project
+php artisan serve —> run project
+php artisan migrate —> migrate tables info
+php artisan migrate:refresh —> reset and re-run all migrations
+php artisan make:model <Name> —> make a new model
+php artisan tinker —> boot up laravel’s shell; (ctrl-c) and re-run it up so it works with recent changes
+	App\Task::all() —> fetch all tasks
+	(cmd-k) —> clear screen
+	App\Task::where('id', '>', 2)->get();
+	App\Task::pluck('body'); —> pluck body from every record
+	App\Task::first(); —> get first record; can also call a function within Task class
+	App\Task::where('completed', 0)->get();
+php artisan migrate:reset
+php artisan make:model <Name> -m —> create a model and migration for that model
+php artisan make:model <Name> -c —> create a model and controller for that model
+composer dump-autoload —> refresh; dump all autoload files
 
 MySql Commands:
-Show dbs —> show databases;
-Login to db —> mysql -u <username> -p
-Create new database —> create database <name>;
-To use db —> use <name>;
-View tables —> show tables;
+show databases; —> show dbs
+mysql -u <username> -p —> login to db
+create database <name>; —> create new database
+use <name>; —> to use db
+show tables; —> view tables

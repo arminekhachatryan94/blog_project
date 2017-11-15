@@ -11,6 +11,8 @@
 |
 */
 
+use App\Task; // import task class
+
 // no need to type out welcome.blade.php
 Route::get('/tasks', function () {
 	/*
@@ -30,16 +32,16 @@ Route::get('/tasks', function () {
     ];*/
 
     // laravel's query builder
-    $tasks = DB::table('tasks')->latest()->get();
-
+    //$tasks = DB::table('tasks')->latest()->get();
+    $tasks = Task::all();
     // dd($task); // die and dump; equivalent to var_dump() in vanilla php
     return view('tasks.index', compact('tasks'));
 });
 
 // separate route to view a specific task
 Route::get('/tasks/{task}', function ($id) {
-    $task = DB::table('tasks')->find($id);
-
+    //$task = DB::table('tasks')->find($id);
+    $task = Task::find($id);
     return view('tasks.show', compact('task'));
 });
 
