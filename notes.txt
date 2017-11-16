@@ -17,6 +17,10 @@ php artisan make:model <Name> -c —> create a model and controller for that mod
 composer dump-autoload —> refresh; dump all autoload files
 php artisan make:controller <NameController>
 
+valet park —> add path to valet
+valet forget —> remove path from valet
+valet path —> view valet paths
+
 MySql Commands:
 show databases; —> show dbs
 mysql -u <username> -p —> login to db
