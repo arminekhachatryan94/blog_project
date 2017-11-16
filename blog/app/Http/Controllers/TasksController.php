@@ -14,7 +14,7 @@ class TasksController extends Controller
 
     // make sure $task matches your route {task} name in web.php
     public function show(Task $task){ // route model binding
-    	//$task = Task::find($id);
+    	$task = Task::find($id);
     	//return $task;
     	return view('tasks.show', compact('task'));
     }
