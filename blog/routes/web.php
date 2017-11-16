@@ -11,10 +11,10 @@
 |
 */
 
-use App\Task; // import task class
+//use App\Task; // import task class
 
-Route::get('/tasks', 'TasksController@index'); // index is method responsible
-Route::get('/tasks/{task}', 'TasksController@show');
+//Route::get('/tasks', 'TasksController@index'); // index is method responsible
+//Route::get('/tasks/{task}', 'TasksController@show');
 
 // no need to type out welcome.blade.php
 // Route::get('/tasks', function () {
@@ -50,6 +50,14 @@ Route::get('/tasks/{task}', 'TasksController@show');
 });
 */
 
+
+
+Route::get('/', 'PostsController@index');
+Route::get('/posts/{post}', 'PostsController@show');
+
+// controller => PostsController
+// eloquent model => Post
+// migration => create_posts_table
 
 
 
