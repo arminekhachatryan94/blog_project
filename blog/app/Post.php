@@ -3,5 +3,7 @@
 namespace App;
 
 class Post extends Model {
-	// Post
+	public function comments() {
+    	return $this->hasMany(Comment::class);
+    }
 }
