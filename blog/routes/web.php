@@ -53,7 +53,13 @@ Route::get('/tasks/{task}', function ($id) {
 
 
 Route::get('/', 'PostsController@index');
-Route::get('/posts/{post}', 'PostsController@show');
+//Route::get('/posts/{post}', 'PostsController@show');
+Route::get('/posts/create', 'PostsController@create');
+Route::post('/posts', 'PostsController@store');
+
+
+
+
 
 // controller => PostsController
 // eloquent model => Post
@@ -61,3 +67,8 @@ Route::get('/posts/{post}', 'PostsController@show');
 
 
 
+
+// get --> displays
+// post --> submits request
+// patch --> edit?
+// delete --> delete

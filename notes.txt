@@ -18,6 +18,7 @@ composer dump-autoload —> refresh; dump all autoload files
 php artisan make:controller <NameController>
 php artisan make:migration create_posts_table —create=posts —> posts is the name of the table
 php artisan make:model Post -mc —> create a model named Post with a migration and a controller
+php artisan make:controller TasksController -r —> resource full controller
 
 valet park —> add path to valet
 valet forget —> remove path from valet
