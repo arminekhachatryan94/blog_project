@@ -1,9 +1,7 @@
-<!doctype html>
-<html>
-    <head>
-        <title></title>
-    </head>
-    <body>
-        <h1>{{ $task->body }}</h1>
-    </body>
-</html>
+@extends ('layouts.master')
+
+@section('content')
+<div class="col-sm-8 blog-main">
+    <h1>{{ $task->body }}</h1>
+</div>
+@endsection

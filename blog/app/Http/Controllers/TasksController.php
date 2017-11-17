@@ -24,25 +24,26 @@ class TasksController extends Controller
 
     // /tasks/create
     public function create(){
-
+        ;
     }
 
     // POST /tasks
     public function store(Request $request){
-
+        ;
     }
 
     // GET /tasks/id/edit
     public function edit($id){
-
+        ;
     }
 
     // PATCH /tasks/id
     public function update(Request $request, $id){
+        ;
     }
 
     // DELETE /tasks/id
     public function destroy($id){
-
+        ;
     }
 }
