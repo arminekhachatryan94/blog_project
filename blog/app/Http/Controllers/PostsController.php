@@ -39,6 +39,11 @@ class PostsController extends Controller
     		'body' => request('body')
     	]); */
 
+        $this->validate(request(), [
+            // can add a pipe and then min, max:10, too
+            'title' => 'required',
+            'body' => 'required'
+        ]);
     	Post::create(request(['title', 'body']));
 
     	// And then redirect to the home page
