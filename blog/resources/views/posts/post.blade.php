@@ -10,7 +10,9 @@
 
   <hr>
   <p class="blog-post-meta">
+    {{ $post->user->name }} on
     <i>{{ $post->updated_at->toFormattedDateString() }}</i>
+    
   </p>
   <p>
     {{ $post->body }}

@@ -10,39 +10,55 @@
                 Home
             </a>
             
-            <!-- Barista -->
             <a href="/" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-book"></span>
                 Posts
             </a>
 
-            <!-- Customer -->
             <a href="/tasks" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-check"></span>
                 Tasks
             </a>
 
+            @if( Auth::check() )
             <a href="#" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-envelope"></span>
                 Messages
             </a>
+
+            <a href="#" class="text-white" style="padding:10px;">
+                {{ Auth::user()->name}}
+            </a>
+            @endif
         </div>
         <div class="col-md-4 text-right">
             <!-- right -->
 
-            <!-- Customer -->
+            @if( Auth::check() )
             <a href="#" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-cog"></span>
                 Settings
             </a>
-            <a href="#" class="text-white" style="padding:10px;">
+            @endif
+
+            @if( ! Auth::check() )
+            <a href="/register" class="text-white" style="padding:10px;">
+                <span class="glyphicon glyphicon-log-out"></span>
+                Register
+            </a>
+
+            <a href="/login" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-log-out"></span>
                 Login
             </a>
-            <a href="#" class="text-white" style="padding:10px;">
+            @endif
+
+            @if( Auth::check() )
+            <a href="/logout" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-log-out"></span>
                 Logout
             </a>
+            @endif
         </div>
     </div>
     
