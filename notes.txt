@@ -42,3 +42,4 @@ show tables; —> view tables
 
 Non-command notes
 axios - Ajax library
+any laravel form must have a csrf_field() in the view
