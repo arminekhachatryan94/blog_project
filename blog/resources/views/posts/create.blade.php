@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="col-xs-8">
 	<h1>Publish a post</h1>
 	<hr>
 	<form method="POST" action="/posts">
@@ -16,9 +17,10 @@
 		</div>
 
 		<div class="form-group">
-		<button type="submit" class="btn btn-info">Publish</button>
+			<button type="submit" class="btn btn-info">Publish</button>
 		</div>
 
 		@include ('layouts.errors')
 	</form>
+</div>
 @endsection
