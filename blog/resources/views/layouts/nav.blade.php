@@ -26,8 +26,9 @@
                 Messages
             </a>
 
-            <a href="#" class="text-white" style="padding:10px;">
-                {{ Auth::user()->name}}
+            <a href="/posts/create" class="text-white" style="padding:10px;">
+                <span class="glyphicon glyphicon-send"></span>
+                Create
             </a>
             @endif
         </div>
@@ -35,6 +36,10 @@
             <!-- right -->
 
             @if( Auth::check() )
+            <a href="#" class="text-white" style="padding:10px;">
+                {{ Auth::user()->name}}
+            </a>
+
             <a href="#" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-cog"></span>
                 Settings
