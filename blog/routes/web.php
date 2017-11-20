@@ -16,6 +16,26 @@ use App\Task; // import task class
 //Route::get('/tasks', 'TasksController@index'); // index is method responsible
 //Route::get('/tasks/{task}', 'TasksController@show');
 
+
+
+
+// instead of bind, if you use singleton, no matter how many times you resolve this out of the container, you'll get the same instance
+App::bind('App\Billing\Stripe', function() {
+    return new \App\Billing\Stripe(config('services.stripe.secret'));
+});
+
+$stripe = App::make('App\Billing\Stripe');
+// instead of App::make, resolve or just app also work
+
+// App::instance('App\Billing\Stripe', $stripe);
+
+// dd($stripe);
+
+
+
+
+
+
 // no need to type out welcome.blade.php
 Route::get('/tasks', function () {
 	/*
@@ -80,3 +100,4 @@ Route::get('/logout', 'SessionsController@destroy');
 // post --> submits request
 // patch --> edit?
 // delete --> delete
+
