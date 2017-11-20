@@ -1,10 +1,11 @@
 @extends('layouts.master')
 
+@section('pagename')
+Login
+@endsection
+
 @section('content')
-
 	<div class="col-md-8">
-		<h1>Sign In</h1>
-
 		<form method="POST" action="/login">
 			{{ csrf_field() }}
 
@@ -24,6 +25,8 @@
 
 			@include ('layouts.errors')
 		</form>
+		<br>
+		<div class="h5 text-left"><a href="/register">Create</a> an account</div>
 	</div>
 
 @endsection
