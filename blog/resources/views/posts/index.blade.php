@@ -1,5 +1,8 @@
 @extends ('layouts.master')
 
+@section('pagename')
+Posts
+@endsection
 
 @section('content')
   <div class="col-sm-8 blog-main">
@@ -17,6 +20,7 @@
 
           
 @endsection
+
 <!--
 @section('footer')
 <script src="/js/file.js"></script>

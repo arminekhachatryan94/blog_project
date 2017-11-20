@@ -26,7 +26,9 @@
     @endif
     <div class="blog-header">
           <div class="container">
-            <h1 class="blog-title">Welcome to Blog</h1>
+            <h1 class="blog-title">
+              @yield('pagename')
+            </h1>
           </div>
     </div>
 

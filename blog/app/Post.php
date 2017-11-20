@@ -7,7 +7,12 @@ use Carbon\Carbon;
 
 class Post extends Model {
 	public function comments() {
-    	return $this->hasMany(Comment::class);
+    	return $this->hasMany(Comment::class)->latest();
+    }
+
+    public function countComments() {
+        $comments = $this->comments;
+        return count($comments);
     }
 
     public function user() { // $post->user

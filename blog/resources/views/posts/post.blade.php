@@ -18,4 +18,18 @@
     {{ $post->body }}
   </p>
   <br>
+  <div class="text-right h5">
+    <a href="/posts/{{ $post->id }}">
+      @if( $post->countComments() == 0 )
+        no comments
+      @endif
+      @if( $post->countComments() == 1 )
+        {{ $post->countComments() }} comment
+      @endif
+      @if( $post->countComments() > 1 )
+        {{ $post->countComments() }} comments
+      @endif
+
+    </a>
+  </div>
 </div>
