@@ -31,7 +31,7 @@ $stripe = App::make('App\Billing\Stripe');*/
 
 // dd($stripe);
 
-dd(resolve('App\Billing\Stripe'));
+// dd(resolve('App\Billing\Stripe'));
 
 
 
