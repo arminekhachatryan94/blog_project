@@ -20,7 +20,8 @@ class PostsController extends Controller
         // return session('message');
 
         // dd($posts);
-        $posts = $posts->all();
+        // $posts = $posts->all();
+        $posts = Post::latest()->get();
 
         // $posts = Post::latest()->filter(request(['month', 'year']))->get();
 

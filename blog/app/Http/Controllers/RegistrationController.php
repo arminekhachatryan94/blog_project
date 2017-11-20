@@ -36,9 +36,9 @@ class RegistrationController extends Controller
 
         // session();
         // request()->session();
-        session()->flash('message', 'Thanks so muhc for signing up');
+        session()->flash('message', 'Thanks so much for signing up');
 
     	// redirect to home page
-    	return redirect('/posts_home');
+    	return redirect('/posts');
     }
 }
