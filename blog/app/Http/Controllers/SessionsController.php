@@ -26,13 +26,13 @@ class SessionsController extends Controller
     	// if not, redirect back
 
     	// if so, sign them in
-    	return redirect()->home();
+    	return redirect('posts');
     	// redirect to home page
     }
 
     public function destroy(){
     	auth()->logout();
 
-    	return redirect()->home();
+    	return redirect('/posts');
     }
 }

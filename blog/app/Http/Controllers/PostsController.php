@@ -68,7 +68,7 @@ class PostsController extends Controller
         session()->flash('message', 'Your post has now been published');
 
     	// And then redirect to the home page
-    	return redirect('/');
+    	return redirect('/posts');
     }
 }
 

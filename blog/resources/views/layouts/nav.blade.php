@@ -10,7 +10,7 @@
                 Home
             </a>
             
-            <a href="/" class="text-white" style="padding:10px;">
+            <a href="/posts" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-book"></span>
                 Posts
             </a>
