@@ -33,6 +33,11 @@ class RegistrationController extends Controller
         \Mail::to($user)->send(new Welcome($user));*/
 
         $form->persist();
+
+        // session();
+        // request()->session();
+        session()->flash('message', 'Thanks so muhc for signing up');
+
     	// redirect to home page
     	return redirect()->home();
     }

@@ -18,6 +18,12 @@
     <header>
       @include ('layouts.nav')
     </header>
+
+    @if ($flash = session('message'))
+      <div id="flash-message" class="alert alert-success" role="alert">
+        {{ $flash }}
+      </div>
+    @endif
     <div class="blog-header">
           <div class="container">
             <h1 class="blog-title">Welcome to Blog</h1>

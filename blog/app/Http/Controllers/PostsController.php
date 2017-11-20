@@ -16,6 +16,8 @@ class PostsController extends Controller
 
     // dependency injection = passing arguments to a function
     public function index( Posts $posts ) {
+        // return session('message');
+
         // dd($posts);
         $posts = $posts->all();
 
@@ -61,6 +63,8 @@ class PostsController extends Controller
         auth()->user()->publish(
             new Post(request(['title', 'body']))
         );
+
+        session()->flash('message', 'Your post has now been published');
 
     	// And then redirect to the home page
     	return redirect('/');
