@@ -1,1 +1,2 @@
-# laravel_tutorial
+# Blog Project
+COMP586
