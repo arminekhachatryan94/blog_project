@@ -20,17 +20,18 @@ use App\Task; // import task class
 
 
 // instead of bind, if you use singleton, no matter how many times you resolve this out of the container, you'll get the same instance
-App::bind('App\Billing\Stripe', function() {
+/*App::bind('App\Billing\Stripe', function() {
     return new \App\Billing\Stripe(config('services.stripe.secret'));
 });
 
-$stripe = App::make('App\Billing\Stripe');
+$stripe = App::make('App\Billing\Stripe');*/
 // instead of App::make, resolve or just app also work
 
 // App::instance('App\Billing\Stripe', $stripe);
 
 // dd($stripe);
 
+dd(resolve('App\Billing\Stripe'));
 
 
 

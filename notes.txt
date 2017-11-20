@@ -19,6 +19,7 @@ php artisan make:controller <NameController>
 php artisan make:migration create_posts_table —create=posts —> posts is the name of the table
 php artisan make:model Post -mc —> create a model named Post with a migration and a controller
 php artisan make:controller TasksController -r —> resource full controller
+php artisan make:provider NameServiceProvider —> make service provider called NameServiceProvider
 
 
 npm run development —> add css code to resources/assets/sass/app.scss then enter command to add them to public/css/app.css; same for js files
