@@ -23,9 +23,12 @@
 			<ul class="list-group">
 			@foreach ( $post->comments as $comment )
 				<li class="list-group-item">
-					{{ $comment->commenter_id }}
+					<i>
+						{{ $comment->created_at->diffForHumans() }}
+					</i>
+					<br>
 					<strong>
-						{{ $comment->created_at->diffForHumans() }}: &nbsp; 
+						{{ $comment->user->name }}:&nbsp;
 					</strong>
 					{{ $comment->body }}
 				</li>

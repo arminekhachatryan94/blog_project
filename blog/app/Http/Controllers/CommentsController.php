@@ -15,14 +15,14 @@ class CommentsController extends Controller
 
         $body = request('body');
         $post_id = $post->id;
-    	$user_id => $post->user_id;
-        $commenter_id => auth()->id();
+    	$user_id = $post->user_id;
+        $commenter_id = auth()->id();
 
     	Comment::create([
     		'body' => $body,
     		'post_id' => $post_id,
             'user_id' => $user_id,
-            'commenter_id' => $commenter_id,
+            'commenter_id' => $commenter_id
     	]);
     	
     	return back();
