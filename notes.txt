@@ -22,6 +22,7 @@ php artisan make:controller TasksController -r —> resource full controller
 php artisan make:provider NameServiceProvider —> make service provider called NameServiceProvider
 php artisan make:mail WelcomeAgain --markdown="emails.welcome-again"
 php artisan vendor:publish --tag=laravel-mail
+php artisan make:request NameRequest
 
 npm run development —> add css code to resources/assets/sass/app.scss then enter command to add them to public/css/app.css; same for js files
 npm run watch —> register a watcher to detect changes; must run every time
