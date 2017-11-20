@@ -16,6 +16,7 @@ class PostsController extends Controller
 
     // dependency injection = passing arguments to a function
     public function index( Posts $posts ) {
+
         // return session('message');
 
         // dd($posts);
