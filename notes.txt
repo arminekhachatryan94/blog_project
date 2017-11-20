@@ -20,7 +20,8 @@ php artisan make:migration create_posts_table —create=posts —> posts is the 
 php artisan make:model Post -mc —> create a model named Post with a migration and a controller
 php artisan make:controller TasksController -r —> resource full controller
 php artisan make:provider NameServiceProvider —> make service provider called NameServiceProvider
-
+php artisan make:mail WelcomeAgain --markdown="emails.welcome-again"
+php artisan vendor:publish --tag=laravel-mail
 
 npm run development —> add css code to resources/assets/sass/app.scss then enter command to add them to public/css/app.css; same for js files
 npm run watch —> register a watcher to detect changes; must run every time
