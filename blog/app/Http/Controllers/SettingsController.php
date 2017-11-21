@@ -25,13 +25,13 @@ class SettingsController extends Controller
     	
     	$user = User::find(auth()->user()->id);
 
-    	//
+    	/*
     	if( bcrypt($user->password) == request('password') ){
     		// $user->name = request('name');
     		// $user->save();
 
     		session()->flash('message', 'Name successfully changed');
-    	}
+    	}*/
     	//
     	
 
@@ -87,31 +87,34 @@ class SettingsController extends Controller
     }
 
     public function password(){
-    	
+
+        $oldpassword = request('oldpassword');
+        $password = request('password');
+
+
     	$this->validate(request(), [
     		'oldpassword' => 'required',
     		'password' => 'required|confirmed'
     	]);
 
-    	if( ! auth()->attempt(['password' => request('oldpassword')]) ){
-    		return back()->withErrors([
-    			'message' => 'Incorrect password.'
-    		]);
-    	}
+        if( ! auth()->attempt(['password' => request('oldpassword')]) ){
+                return back()->withErrors([
+                'message' => 'Incorrect password.'
+            ]);
+        }
 
-    	if( request('oldpassword') == request('newpassword') ){
-    		return back()->withErrors([
-    			'message' => "Couldn't change password. You entered the same password as your old one."
-    		]);
-    	}
+        if( $oldpassword == $password ){
+            return back()->withErrors([
+                'message' => "Couldn't change password. You entered the same password as your old one."
+            ]);
+        }
+        
+        $user = User::find(auth()->user()->id);
+        $user->password = bcrypt(request('password'));
+        $user->save();
 
-    	$user = User::find(auth()->user()->id);
-    	$user->password = bcrypt(request('password'));
-    	$user->save();
-
-    	session()->flash('message', 'Password successfully changed');
-    	// return request('password');
-
-    	return redirect('settings');
+        session()->flash('message', 'Password successfully changed.' );
+        return redirect('settings');
+        
     }
 }

@@ -44,6 +44,10 @@ show tables; —> view tables
 
 
 Non-command notes
-axios - Ajax library
-any laravel form must have a csrf_field() in the view
-When creating user passwords, use bcrypt(‘password’), which generates a unique secure token
+- axios - Ajax library
+- any laravel form must have a csrf_field() in the view on first line:
+<form>
+{{ csrf_field() }}
+...
+</form>
+- When creating user passwords, use bcrypt(‘password’), which generates a unique secure token
