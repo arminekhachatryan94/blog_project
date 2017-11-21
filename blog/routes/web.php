@@ -72,27 +72,42 @@ Route::get('/tasks/{task}', function ($id) {
 
 
 
+// Posts
 Route::get('/', 'PostsController@index')->name('home');
 Route::get('/posts', 'PostsController@index');
 Route::get('/posts/create', 'PostsController@create');
 Route::post('/posts', 'PostsController@store');
 Route::get('/posts/{post}', 'PostsController@show');
 
+// tags
 Route::get('/posts/tags/{tag}', 'TagsController@index');
+// Route::post('/posts/{post}', 'TagsController@store');
 
+// comments
 Route::post('/posts/{post}/comments', 'CommentsController@store');
 
+// registration
 Route::get('/register', 'RegistrationController@create');
 Route::post('/register', 'RegistrationController@store');
 
+// login
 Route::get('/login', 'SessionsController@create');
 Route::post('/login', 'SessionsController@store');
 Route::get('/logout', 'SessionsController@destroy');
 
+// settings
 Route::get('/settings', 'SettingsController@index');
 Route::post('/settings/name', 'SettingsController@name');
 Route::post('/settings/email', 'SettingsController@email');
 Route::post('/settings/password', 'SettingsController@password');
+
+// messages
+Route::get('/messages', 'MessagesController@index'); // all messages
+// Route::get('/messages/{name}', 'MessagesController@show'); // view messages based of user id
+Route::get('/messages/create', 'MessagesController@create'); // send message to new person based off email
+// Route::post('/messages/{name}', 'MessagesController@store'); // send chat messages
+
+
 
 
 // Route::get('/messages', 'MessagesController@index');

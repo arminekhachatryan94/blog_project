@@ -12,4 +12,8 @@ class TagsController extends Controller
     	
     	return view('posts.index', compact('posts'));
     }
+
+    public function store(){
+    	
+    }
 }

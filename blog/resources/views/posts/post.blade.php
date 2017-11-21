@@ -11,8 +11,7 @@
   <hr>
   <p class="blog-post-meta">
     {{ $post->user->name }} on
-    <i>{{ $post->updated_at->toFormattedDateString() }}</i>
-    
+    <i>{{ $post->updated_at->toFormattedDateString() }} at {{ $post->updated_at->format('g:i:s A') }}</i>
   </p>
   <p>
     {{ $post->body }}
@@ -20,6 +19,20 @@
   <br>
   <div class="text-right h5">
     <a href="/posts/{{ $post->id }}">
+      <!-- number of tags -->
+      @if( $post->countTags() == 0 )
+        no tags
+      @endif
+      @if( $post->countTags() == 1 )
+        {{ $post->countTags() }} tag
+      @endif
+      @if( $post->countTags() > 1 )
+        {{ $post->countTags() }} tags
+      @endif
+
+      <br>
+      
+      <!-- number of comments -->
       @if( $post->countComments() == 0 )
         no comments
       @endif

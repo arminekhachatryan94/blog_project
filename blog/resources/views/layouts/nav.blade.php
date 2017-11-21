@@ -21,7 +21,7 @@
             </a>
 
             @if( Auth::check() )
-            <a href="#" class="text-white" style="padding:10px;">
+            <a href="/messages" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-envelope"></span>
                 Messages
             </a>

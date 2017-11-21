@@ -1,26 +1,42 @@
 @extends ('layouts.master')
 
 @section('pagename')
-Posts
+<div>Posts<div>
+<a href="/posts" class="btn-primary text-white h5" style="padding:6px;">
+			Back
+</a>
 @endsection
 
 @section('content')
 	<div class="col-sm-8 blog-main">
+
 		<h1>{{ $post->title }}</h1>
 
 		{{ $post->body }}
 
 		<br><br>
-		@if (count($post->tags))
-			<ul>
-				@foreach ($post->tags as $tag)
-					<li>
-						<a href="/posts/tags/{{ $tag->name }}">{{ $tag->name }}</a>
-					</li>
-				@endforeach
-			</ul>
-		@endif
 
+		<div>
+			@if (count($post->tags))
+					@foreach ($post->tags as $tag)
+							<a href="/posts/tags/{{ $tag->name }}">#{{ $tag->name }}</a>
+					@endforeach
+			@endif
+
+			<div class="text-right h4 text-primary">
+				<u>
+      			@if( $post->countTags() == 0 )
+        			no tags
+      			@endif
+      			@if( $post->countTags() == 1 )
+        			{{ $post->countTags() }} tag
+      			@endif
+			    @if( $post->countTags() > 1 )
+			    	{{ $post->countTags() }} tags
+			    @endif
+				</u>
+			</div>
+		</div>
 		<hr>
 		<div class="comments">
 			<div class="text-right h4 text-primary">
@@ -36,7 +52,6 @@ Posts
 			    @endif
 				</u>
 			</div>
-
 
 			<ul class="list-group">
 			@foreach ( $post->comments as $comment )
