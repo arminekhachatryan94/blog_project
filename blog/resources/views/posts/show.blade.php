@@ -61,7 +61,7 @@
 					</i>
 					<br>
 					<strong>
-						{{ $comment->user->name }}:&nbsp;
+						{{ $comment->commenter($comment->commenter_id) }}:&nbsp;
 					</strong>
 					{{ $comment->body }}
 				</li>
