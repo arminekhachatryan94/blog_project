@@ -48,6 +48,6 @@ class RegistrationForm extends FormRequest
         // sign them in
         auth()->login($user);
 
-        Mail::to($user)->send(new Welcome($user));
+        // Mail::to($user)->send(new Welcome($user));
     }
 }

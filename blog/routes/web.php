@@ -89,6 +89,11 @@ Route::get('/login', 'SessionsController@create');
 Route::post('/login', 'SessionsController@store');
 Route::get('/logout', 'SessionsController@destroy');
 
+Route::get('/settings', 'SettingsController@index');
+Route::post('/settings/name', 'SettingsController@name');
+Route::post('/settings/email', 'SettingsController@email');
+Route::post('/settings/password', 'SettingsController@password');
+
 
 // Route::get('/messages', 'MessagesController@index');
 // Route::get('/messages/create', 'MessagesController@create');
