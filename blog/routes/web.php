@@ -81,7 +81,7 @@ Route::get('/posts/{post}', 'PostsController@show');
 
 // tags
 Route::get('/posts/tags/{tag}', 'TagsController@index');
-// Route::post('/posts/{post}', 'TagsController@store');
+Route::post('/posts/{post}/tags', 'TagsController@store');
 
 // comments
 Route::post('/posts/{post}/comments', 'CommentsController@store');

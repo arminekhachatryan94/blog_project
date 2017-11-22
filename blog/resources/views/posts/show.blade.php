@@ -9,7 +9,7 @@
 
 @section('content')
 	<div class="col-sm-8 blog-main">
-
+		
 		<h1>{{ $post->title }}</h1>
 
 		{{ $post->body }}
@@ -35,6 +35,23 @@
 			    	{{ $post->countTags() }} tags
 			    @endif
 				</u>
+			</div>
+			<!-- tag form -->
+			<div class="card" style="width:30%;">
+				<div class="card-block">
+					<form method="POST" action="/posts/{{ $post->id }}/tags">
+						{{ csrf_field() }}
+
+						<div class="form-group">
+							<textarea name="body" placeholder="Enter a new tag here." class="form-control" required></textarea>
+						</div>
+						
+						<div class="form-group text-center">
+							<button type="submit" class="btn btn-primary">Add Tag</button>
+						</div>
+					</form>
+					@include ('layouts.errors')
+				</div>
 			</div>
 		</div>
 		<hr>

@@ -14,6 +14,7 @@ class TagsController extends Controller
     }
 
     public function store(){
-    	
+    	$tags = Tag::all();
+    	return view('', 'tags');
     }
 }
