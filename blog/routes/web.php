@@ -73,34 +73,40 @@ Route::get('/tasks/{task}', function ($id) {
 
 
 
+// posts
 Route::get('/', 'PostsController@index')->name('home');
 Route::get('/posts/create', 'PostsController@create');
 Route::post('/posts', 'PostsController@store');
 Route::get('/posts/{post}', 'PostsController@show');
 
+// tags
 Route::get('/posts/tags/{tag}', 'TagsController@index');
 
+// comments
 Route::post('/posts/{post}/comments', 'CommentsController@store');
 
+// register
 Route::get('/register', 'RegistrationController@create');
 Route::post('/register', 'RegistrationController@store');
 
+// login
 Route::get('/login', 'SessionsController@create');
 Route::post('/login', 'SessionsController@store');
 Route::get('/logout', 'SessionsController@destroy');
 
+
+// settings
+Route::get('/settings', 'SettingsController@index');
+Route::post('/settings/name', 'SettingsController@name');
+Route::post('/settings/email', 'SettingsController@email');
+Route::post('/settings/password', 'SettingsController@password');
 
 
 
 // controller => PostsController
 // eloquent model => Post
 // migration => create_posts_table
-
-
-
-
 // get --> displays
 // post --> submits request
 // patch --> edit?
 // delete --> delete
-

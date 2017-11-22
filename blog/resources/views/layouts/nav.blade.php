@@ -40,9 +40,9 @@
                 {{ Auth::user()->name}}
             </a>
 
-            <a href="#" class="text-white" style="padding:10px;">
+            <a href="/settings" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-cog"></span>
-                Settings
+                <!-- Settings -->
             </a>
             @endif
 
