@@ -2,26 +2,29 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 
 use App\Http\Requests\RegistrationForm;
 
 class RegistrationController extends Controller
 {
+    public function __construct(){
+        $this->middleware('guest');
+    }    
     public function create(){
     	return view('registration.create');
     }
 
     public function store(RegistrationForm $form ){
     	// validate the form
-    	/*$this->validate(request(), [
+    	$this->validate(request(), [
     		'name' => 'required',
     		'email' => 'required|email',
     		'password' => 'required|confirmed'
-    	]);*/
+    	]);
 
     	// create & save user
-    	/*$user = User::create([
+    	$user = User::create([
             'name' => request('name'),
             'email' => request('email'),
             'password' => bcrypt(request('password'))
@@ -30,9 +33,9 @@ class RegistrationController extends Controller
     	// sign them in
     	auth()->login($user);
 
-        \Mail::to($user)->send(new Welcome($user));*/
+        // \Mail::to($user)->send(new Welcome($user));
 
-        $form->persist();
+        // $form->persist();
 
         // session();
         // request()->session();

@@ -3,14 +3,14 @@
     <div class="row h4" style="display:inline;">
         <div class="col-md-8 text-left">
             <!-- left -->
-            <a href="/" class="h1 text-white" style="padding:10px;">Blog</a>
+            <a href="/" class="h1 text-white" style="padding:10px;">iBlog</a>
             
             <a href="/" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-home"></span>
                 Home
             </a>
             
-            <a href="/" class="text-white" style="padding:10px;">
+            <a href="/posts" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-book"></span>
                 Posts
             </a>
@@ -21,7 +21,7 @@
             </a>
 
             @if( Auth::check() )
-            <a href="#" class="text-white" style="padding:10px;">
+            <a href="/messages" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-envelope"></span>
                 Messages
             </a>
@@ -40,9 +40,9 @@
                 {{ Auth::user()->name}}
             </a>
 
-            <a href="/settings" class="text-white" style="padding:10px;">
+            <!-- settings -->
+            <a href="settings" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-cog"></span>
-                <!-- Settings -->
             </a>
             @endif
 

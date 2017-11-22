@@ -75,6 +75,7 @@ Route::get('/tasks/{task}', function ($id) {
 
 // posts
 Route::get('/', 'PostsController@index')->name('home');
+Route::get('/posts', 'PostsController@index')->name('home');
 Route::get('/posts/create', 'PostsController@create');
 Route::post('/posts', 'PostsController@store');
 Route::get('/posts/{post}', 'PostsController@show');

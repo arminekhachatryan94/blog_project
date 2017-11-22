@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('pagename')
+Login
+@endsection
+
 @section('content')
 
 	<div class="col-md-8">

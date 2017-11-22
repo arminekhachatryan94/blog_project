@@ -1,9 +1,11 @@
 @extends('layouts.master')
 
+@section('pagename')
+	Publish a post
+@endsection
+
 @section('content')
 <div class="col-xs-8">
-	<h1>Publish a post</h1>
-	<hr>
 	<form method="POST" action="/posts">
 		<!-- include for all forms; echos out a hidden token; laravel compares this token to the token the website has to see if they match -->
 		{{ csrf_field() }}
