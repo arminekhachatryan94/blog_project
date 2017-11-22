@@ -27,12 +27,12 @@ php artisan make:request NameRequest
 npm run development —> add css code to resources/assets/sass/app.scss then enter command to add them to public/css/app.css; same for js files
 npm run watch —> register a watcher to detect changes; must run every time
 
-
+____________________________________________________________
 valet park —> add path to valet
 valet forget —> remove path from valet
 valet path —> view valet paths
 
-
+____________________________________________________________
 MySql Commands:
 show databases; —> show dbs
 mysql -u <username> -p —> login to db
@@ -40,10 +40,66 @@ create database <name>; —> create new database
 use <name>; —> to use db
 show tables; —> view tables
 
-
-
-
+____________________________________________________________
 Non-command notes
-axios - Ajax library
-any laravel form must have a csrf_field() in the view
-When creating user passwords, use bcrypt(‘password’), which generates a unique secure token
+- axios - Ajax library
+- any laravel form must have a csrf_field() in the view on first line:
+<form>
+{{ csrf_field() }}
+...
+</form>
+- When creating user passwords, use bcrypt(‘password’), which generates a unique secure token
+
+____________________________________________________________
+Laravel API and json codes:
+
+Route::get();
+Route::put(); // replace old resource with new content; uses ajax calls
+Route::patch(); // update a part of your resource; uses ajax calls
+Route::delete(); // uses ajax?
+
+/* In controller:
+request is submitted through a form for example
+id is given in the url
+public function putQuote(Request $request, $id){
+	;
+}
+*/
+
+return response()->json(['return object' => $return_object], 201);
+200 means ok
+201 code means everythign was successful
+202 accepted
+204 no content
+403 forbidden
+404 not found
+409 conflict
+____________________________________________________________
+Angular CLI
+ng g c quote —> ng generate component called quote; creates ts, html, css, spec.ts files; remove spec files after
+
+____________________________________________________________
+Angular notes
+quote.service.ts file:
+// injectable allows injection
+// rxjs/Rx allows map()
+// response —> get a response
+// convert response to json
+// get object laravel sent through a response
+
+import {Injectable} from “@angular/core”;
+import {Http} from “@angular/http”;
+
+@Injectable()
+export class QuoteService {
+  constructor(private http: Http){
+  
+  }
+  getQuotes(){
+    return this.http.get(‘localhost://…/where_to_get_quotes_from’).map(
+      (response: Response) => {
+        return response.json().quotes;
+      }
+    );
+  }
+}
