@@ -31,20 +31,19 @@ class RegistrationController extends Controller
             return response()->json(['e'=>$e], 401);
         }
         */
-        
-        $request->validate([
-                'name' => 'required',
-                'email' => 'required|email',
-            'password' => 'required'
-        ]); // error show up in $errors
 
-        if( isset($errors) ){
-            $response = [
-                'errors' => $errors,
-            ];
-            return response()->json(['response' => $response], 401);
+
+
+        /*
+        try {
+            $request->validate([
+                    'name' => 'required',
+                    'email' => 'required|email',
+                'password' => 'required'
+            ]); // error show up in $errors
+        } catch( Exception $e ){
+            return response()->json(['errors' => $e], 401 );
         }
-        else{
             try{
                 $name = $request->input('name');
                 $email = $request->input('email');
@@ -54,19 +53,18 @@ class RegistrationController extends Controller
                 $user = User::create([
                     'name' => $name,
                     'email' => $email,
+                    'api_token' => str_random(60),
                     'password' => bcrypt($password),
                 ]);
-
                 // return response()->json($response, 201);
             }
             catch(Illuminate\Database\QueryException $e){
-                $error_code = $e->getCode();
-                if($error_code == 23000){
-                    self::delete($lid);
+                $error_code = $e->getInfo[1];
+                if($error_code == '1062'){
+                    self::delete($user);
                     return response()->json([ 'message' => 'duplicate entry problem'], 401);
                 }
             }
-        }
         // sign them in
         auth()->login($user);
 
@@ -74,28 +72,24 @@ class RegistrationController extends Controller
             'message' => 'Thanks so much for signing up!'
         ];
         return response()->json(['response' => $response], 201);
-        
-    	
-        
+        */
 
-        
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required'
+        ]);
 
+        $user = new User([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password'))
+        ]);
 
+        $user->save();
 
-
-
-
-        // \Mail::to($user)->send(new Welcome($user));
-
-        // $form->persist();
-
-        // session();
-        // request()->session();
-        // session()->flash('message', 'Thanks so much for signing up');
-
-    	// redirect to home page
-    	// return redirect()->home();
-
-
+        return response()->json([
+            'message' => 'Successfully created user!'
+        ], 201);
     }
 }
