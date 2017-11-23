@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
+
+    // https://blog.dev/...
+
     public function getAllPosts() { // works
 
         $posts = Post::all();
@@ -33,19 +36,21 @@ class PostsController extends Controller
         // return response()->json(['message'=>'hello'], 200);
     }
 
-    public function createPost(Request $request){
+    public function createPost(Request $request){ // works
     	
         $post = new Post();
-        $post->user_id = $request->user_id;
-        $post->title = $request->title;
-        $post->body = $request->body;
+        $post->user_id = $request->input('user_id');
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
         $post->save();
 
         return response()->json(['post' => $post], 201);
     }
 
-    public function editPost(Request $request, $id){
+    public function editPost(Request $request, $id){ // works
+        
         $post = Post::find($id);
+        
         if ( !$post ){
             return response()->json(['message' => 'Post not found.'], 404);
         }
@@ -54,16 +59,17 @@ class PostsController extends Controller
         $post->body = $request->input('body');
 
         $post->save();
+
         return response()->json(['post' => $post], 200);
     }
 
-    public function deletePost($id){
+    public function deletePost($id){ // works
         $post = Post::find($id);
         if ( !$post ){
             return response()->json(['message' => 'Post not found.'], 404);
         }
 
-        $quote->delete();
+        $post->delete();
         return response()->json(['message' => 'Post successfully deleted.']);
     }
 }
