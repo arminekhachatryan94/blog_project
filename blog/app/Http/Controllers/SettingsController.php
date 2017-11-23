@@ -12,19 +12,19 @@ class SettingsController extends Controller
     	$user = auth()->user();
     	return view('settings.index', compact('user'));
     }
-    public function name(){
+    public function name(Request $ request){
     	$this->validate(request(), [
     		'name' => 'required',
     		'password' => 'required'
     	]);
     	
     	$user = User::find(auth()->user()->id);
-    	/*
-    	if( bcrypt($user->password) == request('password') ){
+    	
+    	//if( bcrypt($user->password) == request('password') ){
     		// $user->name = request('name');
     		// $user->save();
-    		session()->flash('message', 'Name successfully changed');
-    	}*/
+    	//	session()->flash('message', 'Name successfully changed');
+    	//}
     	//
     	
     	if( ! auth()->attempt(request(['password'])) ){

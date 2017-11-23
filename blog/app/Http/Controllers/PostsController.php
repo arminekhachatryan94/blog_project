@@ -32,8 +32,6 @@ class PostsController extends Controller
         ];
 
         return response()->json($response, 200);
-        
-        // return response()->json(['message'=>'hello'], 200);
     }
 
     public function createPost(Request $request){ // works

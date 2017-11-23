@@ -32,19 +32,23 @@ Route::get('/posts/tags/{tag}', 'TagsController@index');
 
 // comments
 Route::post('/posts/{post}/comments', 'CommentsController@store');
+*/
+
 
 // register
-Route::get('/register', 'RegistrationController@create');
-Route::post('/register', 'RegistrationController@store');
+// Route::get('/register', 'RegistrationController@create');
+Route::post('/register', 'RegistrationController@register');
 
+/*
 // login
 Route::get('/login', 'SessionsController@create');
 Route::post('/login', 'SessionsController@store');
 Route::get('/logout', 'SessionsController@destroy');
+*/
 
-
+/*
 // settings
-Route::get('/settings', 'SettingsController@index');
+Route::get('/settings', 'SettingsController@getInfo');
 Route::post('/settings/name', 'SettingsController@name');
 Route::post('/settings/email', 'SettingsController@email');
 Route::post('/settings/password', 'SettingsController@password');
