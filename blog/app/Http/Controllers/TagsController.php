@@ -1,4 +1,4 @@
-<?php
+<!--?php
 
 namespace App\Http\Controllers;
 
@@ -13,3 +13,4 @@ class TagsController extends Controller
     	return view('posts.index', compact('posts'));
     }
 }
+-->

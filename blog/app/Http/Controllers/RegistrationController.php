@@ -16,6 +16,7 @@ class RegistrationController extends Controller
     }
 
     public function store(RegistrationForm $form ){
+        /*
     	// validate the form
     	$this->validate(request(), [
     		'name' => 'required',
@@ -43,5 +44,6 @@ class RegistrationController extends Controller
 
     	// redirect to home page
     	return redirect()->home();
+        */
     }
 }

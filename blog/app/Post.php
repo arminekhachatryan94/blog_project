@@ -6,6 +6,7 @@ use App\Tag;
 use Carbon\Carbon;
 
 class Post extends Model {
+    /*
 	public function comments() {
     	return $this->hasMany(Comment::class);
     }
@@ -16,12 +17,12 @@ class Post extends Model {
 
     public function addComment($body){    	
     	$this->comments()->create(compact('body'));
-    	/*
-    	Comment::create([
-    		'body' => $body,
-    		'post_id' => $this->id
-    	]);
-    	*/
+    	
+    	//Comment::create([
+    	//	'body' => $body,
+    	//	'post_id' => $this->id
+    	//]);
+    	
     }
 
     // query scope
@@ -46,4 +47,5 @@ class Post extends Model {
     public function tags(){
         return $this->belongsToMany(Tag::class);
     }
+    */
 }

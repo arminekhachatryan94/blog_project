@@ -2,73 +2,69 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Post;
-use App\Repositories\Posts;
-use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth')->except(['index', 'show']);
+    public function getAllPosts() { // works
+
+        $posts = Post::all();
+        $response = [
+            'posts' => $posts
+        ];
+        return response()->json($response, 200);
     }
 
-    // dependency injection = passing arguments to a function
-    public function index( Posts $posts ) {
+    public function getOnePost($id) { // works
+        
+        $post = Post::find($id);
+        
+        if( !$post ){
+            return response()->json(['message' =>'Post not found.'], 404);
+        }
+        
+        $response = [
+            'post' => $post
+        ];
 
-        // return session('message');
-
-        // dd($posts);
-        $posts = $posts->all();
-
-        // $posts = Post::latest()->filter(request(['month', 'year']))->get();
-
-    	return view('posts.index', compact('posts'));
+        return response()->json($response, 200);
+        
+        // return response()->json(['message'=>'hello'], 200);
     }
 
-    public function show(Post $post) {
-        // $post = Post::find($id);
-    	return view('posts.show', compact('post'));
-    }
-
-    public function create() {
-    	return view('posts.create');
-    }
-
-    public function store(){
-    	/*
-    	// Create a new post using the request data
-    	$post = new Post;
-    	$post->title = request('title');
-    	$post->body = request('body');
-
-    	// Save it to the database
-    	$post->save();
-    	*/
+    public function createPost(Request $request){
     	
-    	// won't work if we don't add protected fillable in Post Model
-    	// laravel is protecting us from users making changes? all();
-    	/* // automatically saves it
-    	Post::create([
-    		'title' => request('title'),
-    		'body' => request('body')
-    	]); */
+        $post = new Post();
+        $post->user_id = $request->user_id;
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
 
-        $this->validate(request(), [
-            // can add a pipe and then min, max:10, too
-            'title' => 'required',
-            'body' => 'required'
-        ]);
+        return response()->json(['post' => $post], 201);
+    }
 
-        auth()->user()->publish(
-            new Post(request(['title', 'body']))
-        );
+    public function editPost(Request $request, $id){
+        $post = Post::find($id);
+        if ( !$post ){
+            return response()->json(['message' => 'Post not found.'], 404);
+        }
+        
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
 
-        session()->flash('message', 'Your post has now been published');
+        $post->save();
+        return response()->json(['post' => $post], 200);
+    }
 
-    	// And then redirect to the home page
-    	return redirect('/');
+    public function deletePost($id){
+        $post = Post::find($id);
+        if ( !$post ){
+            return response()->json(['message' => 'Post not found.'], 404);
+        }
+
+        $quote->delete();
+        return response()->json(['message' => 'Post successfully deleted.']);
     }
 }
 
