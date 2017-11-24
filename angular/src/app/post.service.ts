@@ -13,11 +13,11 @@ export class PostService {
 		const savebody = JSON.stringify({body: body});
 		const headers = new Headers({'Content-Type': 'application/json'});
 
-		return this.http.post('https://blog.dev/api/post', body, {headers: headers});
+		return this.http.post('http://127.0.0.1:8000/api/post', body, {headers: headers});
 	}
 
 	getPosts(): Observable<any>{
-		return this.http.get('https://blog.dev/api/posts').map(
+		return this.http.get('http://127.0.0.1:8000/api/posts').map(
 			(response: Response) => {
 				return response.json().quotes;
 			}
@@ -27,12 +27,12 @@ export class PostService {
 	updatePost(id: number, newContent: string){
 		const body = JSON.stringify({body: newContent});
 		const headers = new Headers({'Content-Type': 'application/json'});
-		return this.http.put('https://blog.dev/api/post/' + id, body, {headers: headers}).map(
+		return this.http.put('http://127.0.0.1:8000/api/post/' + id, body, {headers: headers}).map(
 			(response: Response) => response.json()
 		);
 	}
 
 	deletePost(id: number){
-		return this.http.delete('https://blog.dev/api/post/' + id);
+		return this.http.delete('http://127.0.0.1:8000/api/post/' + id);
 	}
 }

@@ -46,12 +46,12 @@
             <!--@endif -->
 
             <!--@if( ! Auth::check() )-->
-            <a href="/register" class="text-white" style="padding:10px;">
+            <a href="/#" [routerLink]= "['/register']" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-log-out"></span>
                 Register
             </a>
 
-            <a href="/login" class="text-white" style="padding:10px;">
+            <a href="/#" [routerLink]= "['/login']" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-log-out"></span>
                 Login
             </a>
