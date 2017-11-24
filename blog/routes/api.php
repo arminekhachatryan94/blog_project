@@ -19,12 +19,27 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 */
 
-Route::get('/', ['uses'=>'PostsController@getAllPosts']);
-Route::get('/posts', ['uses'=>'PostsController@getAllPosts']);
-Route::post('/post', ['uses'=>'PostsController@createPost']);
-Route::get('/posts/{post}', ['uses'=>'PostsController@getOnePost']);
-Route::put('/posts/{post}', ['uses'=>'PostsController@editPost']);
-Route::delete('/posts/{post}', ['uses'=>'PostsController@deletePost']);
+Route::get('/', [
+	'uses'=>'PostsController@getAllPosts'
+]);
+Route::get('/posts', [
+	'uses'=>'PostsController@getAllPosts'
+]);
+Route::post('/post', [
+	'uses'=>'PostsController@createPost',
+	'middleware' => 'auth.jwt'
+]);
+Route::get('/posts/{post}', [
+	'uses'=>'PostsController@getOnePost'
+]);
+Route::put('/posts/{post}', [
+	'uses'=>'PostsController@editPost',
+	'middleware' => 'auth.jwt'
+]);
+Route::delete('/posts/{post}', [
+	'uses'=>'PostsController@deletePost',
+	'middleware' => 'auth.jwt'
+]);
 
 /*
 // tags
