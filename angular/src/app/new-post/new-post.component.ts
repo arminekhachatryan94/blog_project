@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { PostService } from "../post.service";
 
 @Component({
   selector: 'app-new-post',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewPostComponent implements OnInit {
 
-  constructor() { }
+  constructor(private postService: PostService) { }
 
   ngOnInit() {
+  }
+
+  onSubmit(form: NgForm){
+    this.postService.addPost(form.value.body)
+    .subscribe(
+      () => alert('Post created')
+    );
+    form.reset();
   }
 
 }
