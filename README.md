@@ -1,7 +1,7 @@
 # Blog Project
-COMP586
-MVC with Laravel, Angular 2, and MySQL db
+COMP586\n
+MVC with Laravel, Angular 2, and MySQL db\n
 
-Folders:
-angular -> frontend
+Folders:\n
+angular -> frontend\n
 blog -> backend
