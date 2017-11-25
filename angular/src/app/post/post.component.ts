@@ -11,6 +11,7 @@ export class PostComponent implements OnInit {
   @Input() post: Post;
   @Output() postDeleted = new EventEmitter<Post>();
   editing =  false;
+  editTitle = '';
   editBody = '';
 
   constructor(private postService: PostService) { }
@@ -20,22 +21,27 @@ export class PostComponent implements OnInit {
 
   onEdit(){
     this.editing = true;
-    this.editBody = this.post.body;
+    this.editTitle = this.post.title;
+    this.editBody = this.post.body;    
   }
 
   onUpdate(){
-    this.postService.updatePost(this.post.id, this.editBody)
+    this.postService.updatePost(this.post.id, this.editTitle, this.editBody)
     .subscribe(
       (post: Post) => {
+        this.post.title = this.editTitle;    
+        this.editTitle = '';        
         this.post.body = this.editBody;
         this.editBody = '';
       }
     );
-    this.editBody = '';
+    this.editTitle = '';
+    this.editBody = '';    
     this.editing = false;
   }
 
   onCancel(){
+    this.editTitle = '';
     this.editBody = '';
     this.editing = false;
   }

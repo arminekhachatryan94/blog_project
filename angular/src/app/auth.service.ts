@@ -25,16 +25,27 @@ export class AuthService {
                 const token = response.json().token;
                 const base64Url = token.split('.')[1];
                 const base64 = base64Url.replace('-', '+').replace('_', '/');
-                return {token: token, decoded: JSON.parse(window.atob(base64))};
+                localStorage.setItem('id', response.json().user_id);
+                localStorage.setItem('name', response.json().name);                                
+                return {token: token/*, decoded: JSON.parse(window.atob(base64)), user_id: response.json().user_id, name: response.json().name*/};
             }
         ).do(
             tokenData => {
                 localStorage.setItem('token', tokenData.token);
-            }
+            },
         );
     }
 
     getToken(){
         return localStorage.getItem('token');
     }
+
+    getId(){
+        return localStorage.getItem('id');
+    }
+
+    getName(){
+        return localStorage.getItem('name');
+    }
+
 }

@@ -11,29 +11,29 @@ export class PostService {
 
 	}
 
-	addPost(body: string){
+	addPost(title: string, body: string){
 		const token = this.authService.getToken();
 
-		const savebody = JSON.stringify({body: body});
+		const savePost = JSON.stringify({title: title, body: body});
 		const headers = new Headers({'Content-Type': 'application/json'});
 
-		return this.http.post('http://127.0.0.1:8000/api/post?token=' + 'token', body, {headers: headers});
+		return this.http.post('http://127.0.0.1:8000/api/post?token=' + token, savePost, {headers: headers});
 	}
 
 	getPosts(): Observable<any>{
 		return this.http.get('http://127.0.0.1:8000/api/posts').map(
 			(response: Response) => {
-				return response.json().quotes;
+				return response.json().posts;
 			}
 		);
 	}
 
-	updatePost(id: number, newContent: string){
+	updatePost(id: number, title: string, body: string){
 		const token = this.authService.getToken();
 
-		const body = JSON.stringify({body: newContent});
+		const newPost = JSON.stringify({title: title, body: body});
 		const headers = new Headers({'Content-Type': 'application/json'});
-		return this.http.put('http://127.0.0.1:8000/api/post/' + id + "?token=" + token, body, {headers: headers}).map(
+		return this.http.put('http://127.0.0.1:8000/api/post/' + id + "?token=" + token, newPost, {headers: headers}).map(
 			(response: Response) => response.json()
 		);
 	}

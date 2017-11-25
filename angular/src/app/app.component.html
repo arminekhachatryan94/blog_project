@@ -21,12 +21,12 @@
             </a>
 
             <!--@if( Auth::check() )-->
-            <a href="/messages" class="text-white" style="padding:10px;">
+            <a *ngIf="set" href="/messages" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-envelope"></span>
                 Messages
             </a>
 
-            <a href="#" [routerLink]= "['/new-post']" class="text-white" style="padding:10px;">
+            <a *ngIf="set" href="#" [routerLink]= "['/new-post']" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-send"></span>
                 Create
             </a>
@@ -34,31 +34,32 @@
         </div>
         <div class="col-md-4 text-right">
             <!-- @if( Auth::check() )-->
-            <a href="#" class="text-white" style="padding:10px;">
+            <div>
+            <a *ngIf="set" href="#" class="text-white" style="padding:10px;">
                 <!--{{ Auth::user()->name}}-->
-                Name
-            </a>
+                {{ name }}
+            </a></div>
 
             <!-- settings -->
-            <a href="settings" class="text-white" style="padding:10px;">
+            <a *ngIf="set" href="settings" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
             <!--@endif -->
 
             <!--@if( ! Auth::check() )-->
-            <a href="/#" [routerLink]= "['/register']" class="text-white" style="padding:10px;">
+            <a *ngIf="!set" href="/#" [routerLink]= "['/register']" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-log-out"></span>
                 Register
             </a>
 
-            <a href="/#" [routerLink]= "['/login']" class="text-white" style="padding:10px;">
+            <a *ngIf="!set" href="/#" [routerLink]= "['/login']" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-log-out"></span>
                 Login
             </a>
             <!--@endif-->
 
             <!--@if( Auth::check() )-->
-            <a href="/logout" class="text-white" style="padding:10px;">
+            <a *ngIf="set" href="/logout" class="text-white" style="padding:10px;">
                 <span class="glyphicon glyphicon-log-out"></span>
                 Logout
             </a>

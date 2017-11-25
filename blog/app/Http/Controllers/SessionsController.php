@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use JWTAuth;
+use Auth;
 
 class SessionsController extends Controller
 {
@@ -68,7 +69,9 @@ class SessionsController extends Controller
         }
 
         return response()->json([
-            'token' => $token
+            'token' => $token,
+            'user_id' => Auth::user()->id,
+            'name' => Auth::user()->name
         ], 200);
     }
 }

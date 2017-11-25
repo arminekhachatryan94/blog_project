@@ -16,7 +16,7 @@ export class NewPostComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-    this.postService.addPost(form.value.body)
+    this.postService.addPost(form.value.title, form.value.body)
     .subscribe(
       () => alert('Post created')
     );

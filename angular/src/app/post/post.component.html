@@ -8,14 +8,19 @@
   	<hr>
 	<p class="blog-post-meta">
 		<!--{{ $post->user->name }} on-->
-		<i>{{ post.updated_at }}</i>
+		<i>{{ post.updated_at | date:'MMMM dd, yyyy hh:mm a' }}</i>
 	</p>
 	<p>
 		{{ post.body }}
 	</p>
 	<div class="panel-footer">
-		<div *ngIf="editing" [(ngModel)]="editBody">
-			<input type="text">
+		<div *ngIf="editing">
+			Title:
+			<input type="text" [(ngModel)]="editTitle">
+			<br>
+			Body:
+			<input type="text" [(ngModel)]="editBody">
+			<br>
 			<a href="#" (click)="onUpdate()">Save</a>
 			<a href="#" (click)="onCancel()">Cancel</a>		
 		</div>
