@@ -5,17 +5,32 @@
 
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" name="email" ngModel required>
+      <input type="email" class="form-control"
+        id="email" name="email"
+        ngModel #email="ngModel"
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+        required>
+      <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+        <div [hidden]="!email.errors.required">Email is required</div>
+        <div [hidden]="!email.errors.pattern">Must be a valid email</div>        
+      </div>
     </div>
 
     <div class="form-group">
       <label for="password">Password:</label>
-      <input type="password" class="form-control" id="password" name="password" ngModel required>
+      <input type="password" class="form-control"
+        id="password" name="password"
+        ngModel #password="ngModel" required>
+      <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
+        <div [hidden]="!password.errors.required">Password is required</div>
+      </div>
     </div>
 
     <div class="form-group">
       <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Login</button>
     </div>
 
+    <!-- Invalid login -->
+    <div></div>
   </form>
 </div>
