@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   error: string;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private _flashMessagesService: FlashMessagesService) { }
 
   ngOnInit() {
   }
@@ -24,9 +25,13 @@ export class LoginComponent implements OnInit {
         // error => console.log(error)
         error => (this.error = error)
       );
-    //if( !this.error ){
+    if( this.error != null ){
+      this._flashMessagesService.show('Welcome back!', { cssClass: 'alert-success', timeout: 1000 });
       /**/this.router.navigate(['/']);
-    //}
+    }
+    else{
+      this._flashMessagesService.show('Invalid credentials. Please try again!', { cssClass: 'alert-danger', timeout: 1000 });
+    }
   }
 
 }
