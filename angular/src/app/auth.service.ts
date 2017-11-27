@@ -48,4 +48,8 @@ export class AuthService {
         return localStorage.getItem('name');
     }
 
+    resetLocalStorage(){
+        localStorage.clear();
+    }
+
 }

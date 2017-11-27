@@ -6,15 +6,18 @@ import { provideRoutes} from '@angular/router';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { APP_BASE_HREF } from '@angular/common';
 
-import { AppComponent } from "./app.component";
-import { PostComponent } from "./post/post.component";
-import { PostsComponent } from "./posts/posts.component";
-import { NewPostComponent } from "./new-post/new-post.component";
-import { routing } from "./app.routing";
-import { PostService } from "./post.service";
+import { AppComponent } from './app.component';
+import { PostComponent } from './post/post.component';
+import { PostsComponent } from './posts/posts.component';
+import { NewPostComponent } from './new-post/new-post.component';
+import { routing } from './app.routing';
+import { PostService } from './post.service';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
+import { NavComponent } from './nav/nav.component';
+import { ViewPostComponent } from './view-post/view-post.component';
+import { EqualValidator } from './equal-validator.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { AuthService } from './auth.service';
     PostsComponent,
     NewPostComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    NavComponent,
+    ViewPostComponent,
+    EqualValidator
   ],
   imports: [
     BrowserModule,

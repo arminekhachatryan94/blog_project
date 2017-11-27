@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
+import { NavComponent } from './nav/nav.component';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +8,13 @@ import { AuthService } from './auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
-  set = false;
-  name = '';
+  
 
   constructor(private authService: AuthService){
-    this.name = authService.getName();
-    this.set = true;
   }
+
+  ngOnInit(){
+    
+  }
+
 }

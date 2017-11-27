@@ -1,23 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/Rx';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
 import { AuthService } from './auth.service';
 
 @Injectable()
 export class PostService {
 	constructor(private http: Http, private authService: AuthService){
-
 	}
 
-	addPost(title: string, body: string){
+	addPost(id: number, title: string, body: string){
 		const token = this.authService.getToken();
 
-		const savePost = JSON.stringify({title: title, body: body});
+		const post = JSON.stringify({user_id: id, title: title, body: body});
 		const headers = new Headers({'Content-Type': 'application/json'});
 
-		return this.http.post('http://127.0.0.1:8000/api/post?token=' + token, savePost, {headers: headers});
+		return this.http.post('http://127.0.0.1:8000/api/post?token=' + token, post, {headers: headers});
 	}
 
 	getPosts(): Observable<any>{
