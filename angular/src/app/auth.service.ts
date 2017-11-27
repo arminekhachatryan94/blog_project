@@ -26,8 +26,8 @@ export class AuthService {
                 const base64Url = token.split('.')[1];
                 const base64 = base64Url.replace('-', '+').replace('_', '/');
                 localStorage.setItem('id', response.json().user_id);
-                localStorage.setItem('name', response.json().name);                                
-                return {token: token/*, decoded: JSON.parse(window.atob(base64)), user_id: response.json().user_id, name: response.json().name*/};
+                localStorage.setItem('name', response.json().name);
+                return {token: token, decoded: JSON.parse(window.atob(base64)), user_id: response.json().user_id, name: response.json().name};
             }
         ).do(
             tokenData => {

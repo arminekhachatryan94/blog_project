@@ -32,10 +32,10 @@
         ngModel #password="ngModel"
         validateEqual="passwordconfirmation" reverse="true"
         required>
-      <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
+      <!--div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
         <div [hidden]="!password.errors.required">Password is required</div>
-      </div>
-      <div [hidden]="password.valid || (password.pristine && !f.submitted)" class="text-danger">
+      </div-->
+      <div [hidden]="password.valid || (password.pristine && !f.submitted)" class="alert aler-danger">
         Password is required
       </div>
     </div>

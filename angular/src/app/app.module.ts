@@ -18,7 +18,6 @@ import { AuthService } from './auth.service';
 import { NavComponent } from './nav/nav.component';
 import { ViewPostComponent } from './view-post/view-post.component';
 import { EqualValidator } from './equal-validator.directive';
-import { FlashMessagesModule } from 'angular2-flash-messages';
 
 @NgModule({
   declarations: [
@@ -36,8 +35,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing,
-    FlashMessagesModule.forRoot()
+    routing
   ],
   providers: [PostService, AuthService, { provide: APP_BASE_HREF, useValue : '/' }],
   bootstrap: [AppComponent]
