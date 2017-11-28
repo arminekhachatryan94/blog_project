@@ -3,7 +3,6 @@ import { Response } from '@angular/http';
 import { Post } from "../post.interface";
 import { PostService } from "../post.service";
 
-
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',

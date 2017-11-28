@@ -10,6 +10,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  error: string;
   message: string;
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -21,15 +22,19 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         response => {
           this.message = response['message'];
+        },
+        error => {
+          this.error = error;
         }
-        // error => console.log(error)
-      )
+      );
 
-    if( this.message === 'Successfully created user!' ){
+    if( this.message ){
       this.router.navigate(['/login']);
+      alert('Thanks for registering! Please login to verify.');
     }
     else{
       window.scrollTo(0, 0);
+      alert('Sorry, email was already taken! Please try again.');
     }
   }
 

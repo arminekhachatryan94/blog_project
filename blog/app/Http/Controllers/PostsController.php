@@ -3,15 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Comment;
+use App\User;
 use JWTAuth;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-
     // https://blog.dev/...
     public function getAllPosts() { // works
         $posts = Post::all();
+        // $post_com = array(count($posts));
+        foreach ( $posts as $post){
+            $post->comments;
+            foreach ( $post->comments as $comment ){
+                $id = $comment->commenter_id;                
+                $comment->user = User::find($id);
+            }
+            /*
+            $posts_com[$i] = [
+                'post' => $posts[$i] //,
+                //'num_comments' => count(($posts[$i])->comments)
+            ];*/
+        }
         $response = [
             'posts' => $posts
         ];
@@ -23,7 +37,7 @@ class PostsController extends Controller
         $post = Post::find($id);
         
         if( !$post ){
-            return response()->json(['message' =>'Post not found.'], 404);
+            return response()->json(['message' =>'not found'], 404);
         }
         
         $response = [
@@ -49,7 +63,7 @@ class PostsController extends Controller
         $post = Post::find($id);
         
         if ( !$post ){
-            return response()->json(['message' => 'Post not found.'], 404);
+            return response()->json(['message' => 'not found'], 404);
         }
         
         $post->title = $request->input('title');
@@ -63,11 +77,11 @@ class PostsController extends Controller
     public function deletePost($id){ // works
         $post = Post::find($id);
         if ( !$post ){
-            return response()->json(['message' => 'Post not found.'], 404);
+            return response()->json(['message' => 'not found'], 404);
         }
 
         $post->delete();
-        return response()->json(['message' => 'Post successfully deleted.']);
+        return response()->json(['message' => 'success']);
     }
 }
 

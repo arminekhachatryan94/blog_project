@@ -13,21 +13,44 @@
 	<p>
 		{{ post.body }}
 	</p>
-	<div class="panel-footer">
-		<div *ngIf="editing">
-			Title:
-			<input type="text" [(ngModel)]="editTitle">
-			<br>
-			Body:
-			<input type="text" [(ngModel)]="editBody">
-			<br>
-			<a href="#" (click)="onUpdate()">Save</a>
-			<a href="#" (click)="onCancel()">Cancel</a>		
+	<div class="panel-footer" *ngIf="user_id == post.user_id">
+			<div *ngIf="editing">
+				Title:
+				<input type="text" [(ngModel)]="editTitle">
+				<br>
+				Body:
+				<input type="text" [(ngModel)]="editBody">
+				<br>
+				<a href="#" (click)="onUpdate()">Save</a>
+				<a href="#" (click)="onCancel()">Cancel</a>		
+			</div>
+			<div *ngIf="!editing">
+				<div class="row">
+				<a href="#" class="col-xs-1" (click)="onEdit()">Edit</a>
+				<a href="#" class="col-xs-1" (click)="onDelete()">Delete</a>
+				<a href="#" class="col-xs-10 text-right"
+					*ngIf="(post.comments.length == 1)"
+					(click)="showComments()">
+					{{ post.comments.length }} comment
+				</a>
+				<a href="#" class="col-xs-10 text-right"
+					*ngIf="(post.comments.length != 1)"
+					(click)="showComments()">
+					{{ post.comments.length }} comments
+				</a>
+				</div>
+			</div>
+	</div>
+	<div *ngIf="viewComments" class="text-right" style="padding:10px;">
+		<div class="text-left" style="background-color:#e6f7ff">
+			<div style="background-color:#f8fdff" *ngFor="let comment of post.comments">
+				<div style="padding:5px;"><b>{{ comment.user.name }}</b></div>
+				<i style="padding:5px; color:grey;">{{ comment.updated_at | date:'MM/dd/yy hh:mm a' }}</i>
+				<div style="padding:10px;">{{ comment.body }}</div>
+				<hr>
+			</div>
 		</div>
-		<div *ngIf="!editing">
-			<a href="#" (click)="onEdit()">Edit</a>
-			<a href="#" (click)="onDelete()">Delete</a>
-		</div>
+		<a href="#" class="text-right" (click)="hideComments()">Hide Comments</a>
 	</div>
 	<br>
 </div>

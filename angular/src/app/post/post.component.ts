@@ -3,12 +3,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Post } from '../post.interface';
 import { PostService } from '../post.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
+  user_id: string;
   @Input() post: Post;
   @Output() postDeleted = new EventEmitter<Post>();
 
@@ -16,7 +18,11 @@ export class PostComponent implements OnInit {
   editTitle = '';
   editBody = '';
 
-  constructor(private postService: PostService, private router: Router) { }
+  viewComments = false;
+
+  constructor(private postService: PostService, private router: Router, private authService: AuthService) {
+    this.user_id = authService.getId();
+  }
 
   ngOnInit() {
   }
@@ -56,5 +62,13 @@ export class PostComponent implements OnInit {
         console.log('Post deleted');
       }
     );
+  }
+
+  showComments(){
+    this.viewComments = true;
+  }
+
+  hideComments(){
+    this.viewComments = false;
   }
 }

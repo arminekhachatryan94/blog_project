@@ -11,6 +11,7 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   error: string;
+  message: string;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -21,14 +22,16 @@ export class LoginComponent implements OnInit {
     this.authService.login(form.value.email, form.value.password)
       .subscribe(
         tokenData => console.log(tokenData),
-        error => console.log(error)
+        error => (this.error = error)
         //error => (this.error = error)
       );
-    if( this.error != null ){
+    if( this.error ){
       this.router.navigate(['/']);
+      alert('Welcome');
     }
     else{
       window.scrollTo(0, 0);
+      alert('Invalid credentials. Please try again');
     }
   }
 

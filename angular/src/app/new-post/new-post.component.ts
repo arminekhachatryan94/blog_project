@@ -24,9 +24,10 @@ export class NewPostComponent implements OnInit {
         () => alert('Post created')
       );
       form.reset();
+
     }
     else{
-      console.log('not signed in');
+      alert('not signed in');
     }
   }
 
