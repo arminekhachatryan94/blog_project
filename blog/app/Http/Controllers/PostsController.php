@@ -12,7 +12,7 @@ class PostsController extends Controller
 {
     // https://blog.dev/...
     public function getAllPosts() { // works
-        $posts = Post::all();
+        $posts = Post::latest()->get();
         // $post_com = array(count($posts));
         foreach ( $posts as $post){
             $post->comments;
@@ -40,6 +40,11 @@ class PostsController extends Controller
             return response()->json(['message' =>'not found'], 404);
         }
         
+        $post->comments;
+        foreach ( $post->comments as $comment ){
+            $id = $comment->commenter_id;                
+            $comment->user = User::find($id);
+        }
         $response = [
             'post' => $post
         ];
@@ -84,17 +89,4 @@ class PostsController extends Controller
         return response()->json(['message' => 'success']);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 

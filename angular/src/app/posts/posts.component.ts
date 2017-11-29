@@ -11,7 +11,7 @@ import { PostService } from "../post.service";
 export class PostsComponent implements OnInit {
   posts: Post[];
   error: Response;
-  
+
   constructor(private postService: PostService) {
     this.postService.getPosts().subscribe(
       (posts: Post[]) => this.posts = posts,

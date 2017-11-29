@@ -4,6 +4,7 @@ import { Post } from '../post.interface';
 import { PostService } from '../post.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -59,7 +60,7 @@ export class PostComponent implements OnInit {
     .subscribe(
       () => {
         this.postDeleted.emit(this.post);
-        console.log('Post deleted');
+        alert('Post deleted');
       }
     );
   }

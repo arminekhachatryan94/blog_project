@@ -18,7 +18,7 @@ export class PostService {
 
 		return this.http.post('http://127.0.0.1:8000/api/post?token=' + token, post, {headers: headers});
 	}
-	/*
+	
 	getOnePost(id: number): Observable<any>{
 		return this.http.get('http://127.0.0.1:8000/api/posts/' + id).map(
 			(response: Response) => {
@@ -26,7 +26,7 @@ export class PostService {
 			}
 		);
 	}
-	*/
+
 	getPosts(): Observable<any>{
 		return this.http.get('http://127.0.0.1:8000/api/posts').map(
 			(response: Response) => {
