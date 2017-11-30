@@ -21,4 +21,6 @@ export const APP_ROUTES: Routes = [
 	{ path: 'login', component: LoginComponent },
 ];
 
+export const appRoutingProviders: any[] = [];
+
 export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);

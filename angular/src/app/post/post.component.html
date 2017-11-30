@@ -16,8 +16,8 @@
 	<div class="panel-footer" style="background-color:rgb(241, 241, 241)">
 			<div>
 				<div class="row">
-				<a href="#" class="col-xs-1" *ngIf="!editing && user_id == post.user_id" (click)="onEdit()">Edit</a>
-				<a href="#" class="col-xs-1" *ngIf="!editing && user_id == post.user_id" (click)="onDelete()">Delete</a>
+				<a href="#" class="col-xs-1" *ngIf="!editing && authService.isAuth()" (click)="onEdit()">Edit</a>
+				<a href="#" class="col-xs-1" *ngIf="!editing && authService.isAuth()" (click)="onDelete()">Delete</a>
 				<a href="#" class="col-xs-2" *ngIf="editing"></a>				
 				<a href="#" class="col-xs-10 text-right"
 					*ngIf="(post.comments.length == 1)"
@@ -30,7 +30,7 @@
 					{{ post.comments.length }} comments
 				</a>
 			</div>
-			<div *ngIf="editing && user_id == post.user_id">
+			<div *ngIf="editing && authService.isAuth()">
 				Title:
 				<input type="text" [(ngModel)]="editTitle">
 				<br>

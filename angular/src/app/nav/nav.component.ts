@@ -10,14 +10,15 @@ import { Router } from '@angular/router';
 export class NavComponent implements OnInit {
   title = '';
   set = false;
+  user_id = '';
   name = '';
-
   constructor(private authService: AuthService, private router: Router){
   }
 
   ngOnInit(){
+    this.user_id = this.authService.getId();
     this.name = this.authService.getName();
-    if( this.name == '' ){    
+    if( !this.authService.isAuth() ){
       this.set = false;
     }
     else{
@@ -26,9 +27,10 @@ export class NavComponent implements OnInit {
   }
 
   logout(event){
+    this.user_id = '';
     this.authService.resetLocalStorage();
-    this.name = this.authService.getName();
-    if( !this.name ){    
+    // this.name = this.authService.getName();
+    if( !this.authService.isAuth() ){
       this.set = false;
     }
     else{

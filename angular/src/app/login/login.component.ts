@@ -19,18 +19,23 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(form: NgForm){
+    console.log(form.value.email);
+    console.log(form.value.password);
     this.authService.login(form.value.email, form.value.password)
       .subscribe(
         tokenData => console.log(tokenData),
         error => (this.error = error)
-        //error => (this.error = error)
       );
-    if( this.error ){
+      console.log(form.value.email);
+      console.log(form.value.password);
+  
+    if( this.authService.isAuth() ){
       this.router.navigate(['/']);
       alert('Welcome');
     }
     else{
-      window.scrollTo(0, 0);
+      form.reset();
+      this.router.navigate(['/login']);
       alert('Invalid credentials. Please try again');
     }
   }

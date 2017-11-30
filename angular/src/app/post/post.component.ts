@@ -26,6 +26,7 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user_id = this.authService.getId();
   }
 
   onEdit(){

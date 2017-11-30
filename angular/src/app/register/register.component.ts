@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
         }
       );
 
-    if( this.message ){
+    if( this.authService.isAuth() ){
       this.router.navigate(['/login']);
       alert('Thanks for registering! Please login to verify.');
     }

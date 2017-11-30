@@ -58,4 +58,8 @@ export class AuthService {
         localStorage.clear();
     }
 
+    isAuth() {
+        return !!localStorage.getItem('token');
+    }
+
 }

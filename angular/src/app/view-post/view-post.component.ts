@@ -31,6 +31,7 @@ export class ViewPostComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user_id = this.authService.getId();
   }
 
 }
