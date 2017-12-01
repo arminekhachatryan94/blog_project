@@ -1,14 +1,19 @@
+  <div *ngIf="authService.isAuth">
     <form #f="ngForm" (ngSubmit)="onSubmit(f)">
       <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" name="title" ngModel>
+        <input type="text" class="form-control" id="title" name="title" ngModel required>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Body</label>
-        <textarea id="body" name="body" class="form-control" ngModel></textarea>
+        <textarea id="body" name="body" class="form-control" ngModel required></textarea>
       </div>
   
       <div class="form-group">
         <button type="submit" class="btn btn-info">Publish</button>
       </div>  
     </form>
+  </div>
+  <!--div *ngIf="!authService.isAuth">
+      <meta http-equiv="refresh" content="0; url=/posts"/>
+  </div-->

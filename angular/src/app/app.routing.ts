@@ -13,8 +13,8 @@ export const APP_ROUTES: Routes = [
 	{ path: '', component: PostsComponent },
 	{ path: 'posts',
 	children: [
-		{ path: '', component: PostsComponent },
-		{ path: ':id', component: ViewPostComponent }
+		{ path: '', component: PostsComponent }
+		/*, { path: ':id', component: ViewPostComponent }*/
 	] },
 	{ path: 'new-post', component: NewPostComponent },
 	{ path: 'register', component: RegisterComponent },

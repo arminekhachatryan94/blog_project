@@ -33,6 +33,6 @@ class SessionsController extends Controller
             'token' => $token,
             'user_id' => Auth::user()->id,
             'name' => Auth::user()->name
-        ], 200);
+        ], 201);
     }
 }

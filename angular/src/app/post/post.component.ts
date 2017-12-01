@@ -4,6 +4,7 @@ import { Post } from '../post.interface';
 import { PostService } from '../post.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { Comment } from '../comment.interface';
 
 @Component({
   selector: 'app-post',
@@ -20,6 +21,7 @@ export class PostComponent implements OnInit {
   editBody = '';
 
   viewComments = false;
+  // comments: Comment[];
 
   constructor(private postService: PostService, private router: Router, private authService: AuthService) {
     this.user_id = authService.getId();
@@ -29,13 +31,13 @@ export class PostComponent implements OnInit {
     this.user_id = this.authService.getId();
   }
 
-  onEdit(){
+  onEdit() {
     this.editing = true;
     this.editTitle = this.post.title;
     this.editBody = this.post.body;
   }
 
-  onUpdate(){
+  onUpdate() {
     this.postService.updatePost(this.post.id, this.editTitle, this.editBody)
     .subscribe(
       (post: Post) => {
@@ -48,9 +50,11 @@ export class PostComponent implements OnInit {
     this.editTitle = '';
     this.editBody = '';
     this.editing = false;
+    location.reload();
+    alert('Post has been updated!');
   }
 
-  onCancel(){
+  onCancel() {
     this.editTitle = '';
     this.editBody = '';
     this.editing = false;

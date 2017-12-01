@@ -29,8 +29,10 @@
     <div class="form-group">
       <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Login</button>
     </div>
-
-    <!-- Invalid login -->
-    <div></div>
+    
   </form>
 </div>
+
+<!--div *ngIf="authService.isAuth">
+    <meta http-equiv="refresh" content="0; url=/posts"/>
+</div-->

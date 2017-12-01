@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 
 import { PostService } from "../post.service";
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-post',
@@ -11,7 +12,7 @@ import { AuthService } from '../auth.service';
 })
 export class NewPostComponent implements OnInit {
   id;
-  constructor(private postService: PostService, private authService: AuthService) { }
+  constructor(private postService: PostService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -24,6 +25,8 @@ export class NewPostComponent implements OnInit {
         () => alert('Post created')
       );
       form.reset();
+      this.router.navigate(['/posts']);
+
 
     }
     else{
