@@ -4,10 +4,11 @@ import 'rxjs/Rx';
 import { Observable } from 'rxjs';
 
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class PostService {
-	constructor(private http: Http, private authService: AuthService){
+	constructor(private http: Http, private authService: AuthService, private router: Router){
 	}
 
 	addPost(id: number, title: string, body: string){
@@ -16,7 +17,18 @@ export class PostService {
 		const post = JSON.stringify({user_id: id, title: title, body: body});
 		const headers = new Headers({'Content-Type': 'application/json'});
 
-		return this.http.post('http://127.0.0.1:8000/api/post?token=' + token, post, {headers: headers});
+		return this.http.post('http://127.0.0.1:8000/api/post?token=' + token, post, {headers: headers}).map(
+			(response: Response) => {
+                if(response['statusText'] == 'Created'){
+                    location.reload();
+                    alert('Post created!');
+                    this.router.navigate(['/posts']);
+                }
+                else{
+                    alert('post not created');
+                }
+            }
+		);
 	}
 	
 	getOnePost(id: number): Observable<any>{

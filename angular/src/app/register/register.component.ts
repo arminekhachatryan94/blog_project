@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     this.authService.register( form.value.name, form.value.email, form.value.password )
       .subscribe(
         response => {
-          this.message = response['message'];
+          alert(response['message']);
         },
         error => {
           this.error = error;

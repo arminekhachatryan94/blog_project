@@ -1,23 +1,26 @@
-<div class="blog-post" style="background:#e6f7ff;">
+<div class="blog-post" style="background:#e6f7ff; padding:10px">
 	<h2 class="blog-post-title">
-		<a href="posts/{{post.id}}">
+		<div style="color:#0099ff;">
 			{{ post.title }}
-    	</a>
+    	</div>
   	</h2>
 
   	<hr>
+	<p class="h3">
+		{{ post.body }}
+	</p>
+
 	<p class="blog-post-meta">
 		<!--{{ $post->user->name }} on-->
+		<i>{{ post.user.name }}</i>
+		<br>
 		<i>{{ post.updated_at | date:'MMMM dd, yyyy hh:mm a' }}</i>
-	</p>
-	<p>
-		{{ post.body }}
 	</p>
 	<div class="panel-footer" style="background-color:rgb(241, 241, 241)">
 			<div>
 				<div class="row">
-				<a href="#" class="col-xs-1" *ngIf="!editing && (user_id == post.id)" (click)="onEdit()">Edit</a>
-				<a href="#" class="col-xs-1" *ngIf="!editing && (user_id == post.id)" (click)="onDelete()">Delete</a>
+				<a href="#" class="col-xs-1" *ngIf="!editing && (user_id == post.user_id)" (click)="onEdit()">Edit</a>
+				<a href="#" class="col-xs-1" *ngIf="!editing && (user_id == post.user_id)" (click)="onDelete()">Delete</a>
 				<a href="#" class="col-xs-2" *ngIf="editing || !authService.isAuth()"></a>				
 				<a href="#" class="col-xs-10 text-right"
 					*ngIf="(post.comments.length == 1)"

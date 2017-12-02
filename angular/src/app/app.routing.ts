@@ -11,11 +11,11 @@ import { ViewPostComponent } from './view-post/view-post.component';
 
 export const APP_ROUTES: Routes = [
 	{ path: '', component: PostsComponent },
-	{ path: 'posts',
-	children: [
-		{ path: '', component: PostsComponent }
-		/*, { path: ':id', component: ViewPostComponent }*/
-	] },
+	//{ path: 'posts',
+	//children: [
+		//{ path: '', component: PostsComponent }
+		// , { path: ':id', component: ViewPostComponent }
+	//] },
 	{ path: 'new-post', component: NewPostComponent },
 	{ path: 'register', component: RegisterComponent },
 	{ path: 'login', component: LoginComponent },

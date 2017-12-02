@@ -29,7 +29,7 @@ import { EqualValidator } from './equal-validator.directive';
     LoginComponent,
     NavComponent,
     ViewPostComponent,
-    EqualValidator
+    EqualValidator,
   ],
   imports: [
     BrowserModule,

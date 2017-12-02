@@ -9,7 +9,7 @@
               Home
           </a>
           
-          <a [routerLink]= "['/posts']" class="text-white" style="padding:10px;">
+          <a [routerLink]= "['/']" class="text-white" style="padding:10px;">
               <span class="glyphicon glyphicon-book"></span>
               Posts
           </a>
@@ -20,12 +20,11 @@
           </a>
       </div>
       <div class="col-md-4 text-right">
-          <div>
           <a *ngIf="authService.isAuth()" class="text-white" style="padding:10px;">
               {{ name }}
-          </a></div>
+          </a>
 
-          <a *ngIf="authService.isAuth()" href="settings" class="text-white" style="padding:10px;">
+          <a *ngIf="authService.isAuth()" [routerLink]="['/settings']" class="text-white" style="padding:10px;">
               <span class="glyphicon glyphicon-cog"></span>
           </a>
 

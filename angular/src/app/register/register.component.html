@@ -1,6 +1,6 @@
-<div class="col-sm-8">
-	<h1>Register</h1>
-
+<div class="col-sm-8" *ngIf="!authService.isAuth()">
+  <div class="display-4" style="color:black;">Register</div>
+  <br>
   <form (ngSubmit)="onRegister(f)" #f="ngForm">
     <div class="form-group">
       <label for="name">Name:</label>
@@ -65,6 +65,6 @@
   </form>
 </div>
 
-<!--div *ngIf="authService.isAuth">
-    <meta http-equiv="refresh" content="0; url=/posts"/>
-</div-->
+<div *ngIf="authService.isAuth()">
+    <meta http-equiv="refresh" content="0; url=/"/>
+</div>

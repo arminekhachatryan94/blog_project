@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
           if ( this.authService.isAuth() ) {
             form.reset();
             location.reload();
-            this.router.navigate(['/posts']);
+            this.router.navigate(['/']);
             alert('Welcome');
           }
           else {

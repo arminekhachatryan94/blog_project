@@ -16,6 +16,7 @@ class PostsController extends Controller
         // $post_com = array(count($posts));
         foreach ( $posts as $post){
             $post->comments;
+            $post->user;
             foreach ( $post->comments as $comment ){
                 $id = $comment->commenter_id;                
                 $comment->user = User::find($id);

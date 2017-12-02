@@ -22,10 +22,10 @@ export class NewPostComponent implements OnInit {
     if( this.id != null ){
       this.postService.addPost(this.id, form.value.title, form.value.body)
       .subscribe(
-        () => alert('Post created')
+        //() => alert('Post created')
       );
       form.reset();
-      this.router.navigate(['/posts']);
+      this.router.navigate(['/']);
 
 
     }

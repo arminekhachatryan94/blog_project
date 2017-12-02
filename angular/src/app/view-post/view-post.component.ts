@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from "../post.interface";
 import { PostService } from "../post.service";
 import { AuthService } from '../auth.service';
@@ -16,7 +16,7 @@ export class ViewPostComponent implements OnInit {
   id: number;
   user_id: string;
 
-  constructor(private route: ActivatedRoute, private postService: PostService, private authService: AuthService) {
+  constructor(private route: ActivatedRoute, private postService: PostService, private authService: AuthService, private router: Router) {
     this.user_id = authService.getId();
 
     this.route.params.subscribe( params => {
@@ -33,5 +33,6 @@ export class ViewPostComponent implements OnInit {
   ngOnInit() {
     this.user_id = this.authService.getId();
   }
+  
 
 }

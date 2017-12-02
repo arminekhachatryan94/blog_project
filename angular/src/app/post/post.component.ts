@@ -5,6 +5,7 @@ import { PostService } from '../post.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Comment } from '../comment.interface';
+import { User } from '../user.interface';
 
 @Component({
   selector: 'app-post',
