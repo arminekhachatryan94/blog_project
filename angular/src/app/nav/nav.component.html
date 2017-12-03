@@ -24,9 +24,9 @@
               {{ name }}
           </a>
 
-          <a *ngIf="authService.isAuth()" [routerLink]="['/settings']" class="text-white" style="padding:10px;">
+          <!--a *ngIf="authService.isAuth()" [routerLink]="['/settings']" class="text-white" style="padding:10px;">
               <span class="glyphicon glyphicon-cog"></span>
-          </a>
+          </a-->
 
           <a *ngIf="!authService.isAuth()" [routerLink]= "['/register']" class="text-white" style="padding:10px;">
               <span class="glyphicon glyphicon-log-out"></span>

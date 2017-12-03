@@ -16,7 +16,6 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { NavComponent } from './nav/nav.component';
-import { ViewPostComponent } from './view-post/view-post.component';
 import { EqualValidator } from './equal-validator.directive';
 
 @NgModule({
@@ -28,8 +27,7 @@ import { EqualValidator } from './equal-validator.directive';
     RegisterComponent,
     LoginComponent,
     NavComponent,
-    ViewPostComponent,
-    EqualValidator,
+    EqualValidator
   ],
   imports: [
     BrowserModule,
