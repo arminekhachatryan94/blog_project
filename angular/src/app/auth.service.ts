@@ -10,18 +10,18 @@ export class AuthService {
     constructor(private http: Http, private router: Router) {
     }
 
-    register(name: string, email: string, password: string) {
+    register(firstName: string, lastName: string, email: string, password: string) {
         return this.http.post('http://127.0.0.1:8000/api/register',
-            { name: name, email: email, password: password },
+            { firstName: firstName, lastName: lastName, email: email, password: password },
             { headers: new Headers({'X-Requested-With': 'XMLHttpRequest'}) }
         ).map(
             (response: Response) => {
-                if(response['statusText'] == 'Created'){
+                if (response['statusText'] == 'Created') {
                     location.reload();
                     alert('User successsfully created. Please login to verify.');
                     this.router.navigate(['/login']);
                 }
-                else{
+                else {
                     location.reload();
                     alert('Sorry, email already exists. Please try again with another email.');
                 }
@@ -39,12 +39,14 @@ export class AuthService {
                 const base64Url = token.split('.')[1];
                 const base64 = base64Url.replace('-', '+').replace('_', '/');
                 localStorage.setItem('id', response.json().user_id);
-                localStorage.setItem('name', response.json().name);
+                localStorage.setItem('firstName', response.json().firstName);
+                localStorage.setItem('lastName', response.json().lastName);
                 return {
                     token: token,
                     decoded: JSON.parse(window.atob(base64)),
                     user_id: response.json().user_id,
-                    name: response.json().name,
+                    firstName: response.json().firstName,
+                    lastName: response.json().lastName,
                     error: response.json().error
                 };
             }
@@ -72,8 +74,12 @@ export class AuthService {
         return localStorage.getItem('id');
     }
 
-    getName() {
-        return localStorage.getItem('name');
+    getFirstName() {
+        return localStorage.getItem('firstName');
+    }
+
+    getLastName() {
+        return localStorage.getItem('lastName');
     }
 
     resetLocalStorage() {

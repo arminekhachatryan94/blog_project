@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister(form: NgForm){
-    this.authService.register( form.value.name, form.value.email, form.value.password )
+    this.authService.register( form.value.firstName, form.value.lastName, form.value.email, form.value.password )
       .subscribe(
         response => {
           alert(response['message']);

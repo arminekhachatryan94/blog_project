@@ -21,7 +21,7 @@
       </div>
       <div class="col-md-4 text-right">
           <a *ngIf="authService.isAuth()" class="text-white" style="padding:10px;">
-              {{ name }}
+              {{ firstName }} {{ lastName }}
           </a>
 
           <!--a *ngIf="authService.isAuth()" [routerLink]="['/settings']" class="text-white" style="padding:10px;">

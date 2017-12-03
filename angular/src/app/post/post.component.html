@@ -12,7 +12,7 @@
 
 	<p class="blog-post-meta">
 		<!--{{ $post->user->name }} on-->
-		<i>{{ post.user.name }}</i>
+		<i>{{ post.user.firstName }} {{ post.user.lastName }}</i>
 		<br>
 		<i>{{ post.updated_at | date:'MMMM dd, yyyy hh:mm a' }}</i>
 	</p>
@@ -46,7 +46,7 @@
 			<div *ngIf="viewComments" class="text-right" style="padding:10px;">
 				<div class="text-left" style="background-color:#e6f7ff">
 					<div style="background-color:#f8fdff" *ngFor="let comment of post.comments">
-						<div style="padding:5px;"><b>{{ comment.user.name }}</b></div>
+						<div style="padding:5px;"><b>{{ comment.user.firstName }} {{ comment.user.lastName }}</b></div>
 						<i style="padding:5px; color:grey;">{{ comment.updated_at | date:'MM/dd/yy hh:mm a' }}</i>
 						<div style="padding:10px;">{{ comment.body }}</div>
 						<hr>

@@ -11,11 +11,13 @@ export class NavComponent implements OnInit {
   title = '';
   set = false;
   user_id = '';
-  name = '';
+  firstName = '';
+  lastName = '';
 
   constructor(private authService: AuthService, private router: Router) {
     this.user_id = this.authService.getId();
-    this.name = this.authService.getName();
+    this.firstName = this.authService.getFirstName();
+    this.lastName = this.authService.getLastName();
     if ( !this.authService.isAuth() ) {
       this.set = false;
     } else {
@@ -25,7 +27,8 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     this.user_id = this.authService.getId();
-    this.name = this.authService.getName();
+    this.firstName = this.authService.getFirstName();
+    this.lastName = this.authService.getLastName();
     if ( !this.authService.isAuth() ) {
       this.set = false;
     } else {
@@ -36,7 +39,8 @@ export class NavComponent implements OnInit {
   logout(event) {
     this.user_id = '';
     this.authService.resetLocalStorage();
-    this.name = '';
+    this.firstName = '';
+    this.lastName = '';
     if ( !this.authService.isAuth() ) {
       this.set = false;
     } else {

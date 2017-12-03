@@ -10,13 +10,15 @@ class RegistrationController extends Controller
 {
     public function register(Request $request ){
         $this->validate($request, [
-            'name' => 'required',
+            'firstName' => 'required',
+            'lastName' => 'required',            
             'email' => 'required|email|unique:users',
             'password' => 'required'
         ]);
 
         $user = new User([
-            'name' => $request->input('name'),
+            'firstName' => $request->input('firstName'),
+            'lastName' => $request->input('lastName'),            
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password'))
         ]);

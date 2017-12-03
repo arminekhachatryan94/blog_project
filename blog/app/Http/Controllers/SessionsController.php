@@ -32,7 +32,8 @@ class SessionsController extends Controller
         return response()->json([
             'token' => $token,
             'user_id' => Auth::user()->id,
-            'name' => Auth::user()->name
+            'firstName' => Auth::user()->firstName,
+            'lastName' => Auth::user()->lastName            
         ], 201);
     }
 }
