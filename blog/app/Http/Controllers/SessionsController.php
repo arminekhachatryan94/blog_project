@@ -11,7 +11,6 @@ class SessionsController extends Controller
 {
     public function loginUser(Request $request){
         $this->validate($request, [
-            // 'name' => 'required',
             'email' => 'required|email',
             'password' => 'required'
         ]);
