@@ -47,22 +47,25 @@ class PostTest extends TestCase {
         $a = [1,2];
         $this->assertCount(2, $posts);
         */
-
-        // create data
+        
+        // check if users table is empty
         $init_users = User::all();
         $this->assertEquals(0, count($init_users));
         
+        // create a user (user id will be 1)
         $user = factory(User::class)->create();
 
+        // check if user was created
         $after_users = User::all();
-        $this->assertEquals(1, count($after_users));        
+        $this->assertEquals(1, count($after_users));
 
-        // get data
+        // create a new post for user 1
         $post = $user->posts()->create([
             'title' => 'Post Title',
             'body' => 'Post body'
         ]);
 
+        // get all posts for user_id of 1 and check
         $found_post = Post::find(1);
         $this->assertEquals($found_post->title, 'Post Title');
         $this->assertEquals($found_post->body, 'Post body');
