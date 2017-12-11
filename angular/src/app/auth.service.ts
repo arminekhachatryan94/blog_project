@@ -89,5 +89,4 @@ export class AuthService {
     isAuth() {
         return !!localStorage.getItem('token');
     }
-
 }
