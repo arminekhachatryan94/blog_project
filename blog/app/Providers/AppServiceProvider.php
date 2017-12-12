@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Schema;
 use \App\Billing\Stripe;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,6 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
+        
         view()->composer('layouts.sidebar', function ($view){
             $archives =  \App\Post::archives();
             $tags = \App\Tag::has('posts')->pluck('name');

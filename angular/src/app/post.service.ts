@@ -17,7 +17,7 @@ export class PostService {
 		const post = JSON.stringify({user_id: id, title: title, body: body});
 		const headers = new Headers({'Content-Type': 'application/json'});
 
-		return this.http.post('http://127.0.0.1:8000/api/post?token=' + token, post, {headers: headers}).map(
+		return this.http.post('http://comp586.us-west-1.elasticbeanstalk.com/api/post?token=' + token, post, {headers: headers}).map(
 			(response: Response) => {
                 if(response['statusText'] == 'Created'){
                     location.reload();
@@ -32,7 +32,7 @@ export class PostService {
 	}
 	
 	getOnePost(id: number): Observable<any>{
-		return this.http.get('http://127.0.0.1:8000/api/posts/' + id).map(
+		return this.http.get('http://comp586.us-west-1.elasticbeanstalk.com/api/posts/' + id).map(
 			(response: Response) => {
 				return response.json().post;
 			}
@@ -40,7 +40,7 @@ export class PostService {
 	}
 
 	getPosts(): Observable<any>{
-		return this.http.get('http://127.0.0.1:8000/api/posts').map(
+		return this.http.get('http://comp586.us-west-1.elasticbeanstalk.com/api/posts').map(
 			(response: Response) => {
 				return response.json().posts;
 			}
@@ -52,7 +52,7 @@ export class PostService {
 
 		const newPost = JSON.stringify({title: title, body: body});
 		const headers = new Headers({'Content-Type': 'application/json'});
-		return this.http.put('http://127.0.0.1:8000/api/posts/' + id + "?token=" + token, newPost, {headers: headers}).map(
+		return this.http.put('http://comp586.us-west-1.elasticbeanstalk.com/api/posts/' + id + "?token=" + token, newPost, {headers: headers}).map(
 			(response: Response) => response.json()
 		);
 	}
@@ -60,6 +60,6 @@ export class PostService {
 	deletePost(id: number){
 		const token = this.authService.getToken();
 		
-		return this.http.delete('http://127.0.0.1:8000/api/posts/' + id + "?token=" + token);
+		return this.http.delete('http://comp586.us-west-1.elasticbeanstalk.com/api/posts/' + id + "?token=" + token);
 	}
 }

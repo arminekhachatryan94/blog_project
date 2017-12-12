@@ -11,18 +11,19 @@ export class AuthService {
     }
 
     register(firstName: string, lastName: string, email: string, password: string) {
-        return this.http.post('http://127.0.0.1:8000/api/register',
+        return this.http.post('http://comp586.us-west-1.elasticbeanstalk.com/api/register',
             { firstName: firstName, lastName: lastName, email: email, password: password },
             { headers: new Headers({'X-Requested-With': 'XMLHttpRequest'}) }
         ).map(
             (response: Response) => {
                 if (response['statusText'] == 'Created') {
-                    location.reload();
-                    alert('User successsfully created. Please login to verify.');
+                    // location.reload();
                     this.router.navigate(['/login']);
+                    alert('User successsfully created. Please login to verify.');
                 }
                 else {
-                    location.reload();
+                    // location.reload();
+                    // this.router.navigate(['/']);
                     alert('Sorry, email already exists. Please try again with another email.');
                 }
             }
@@ -30,7 +31,7 @@ export class AuthService {
     }
 
     login(email: string, password: string) {
-        return this.http.post('http://127.0.0.1:8000/api/login',
+        return this.http.post('http://comp586.us-west-1.elasticbeanstalk.com/api/login',
             { email: email, password: password },
             { headers: new Headers({'X-Requested-With': 'XMLHttpRequest'}) }
         ).map(
