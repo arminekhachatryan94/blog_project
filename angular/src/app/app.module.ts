@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { provideRoutes} from '@angular/router';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { APP_BASE_HREF } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { PostComponent } from './post/post.component';
@@ -35,7 +35,12 @@ import { EqualValidator } from './equal-validator.directive';
     HttpModule,
     routing
   ],
-  providers: [PostService, AuthService, { provide: APP_BASE_HREF, useValue : '/' }],
+  providers: [
+    PostService,
+    AuthService,
+    { provide: APP_BASE_HREF, useValue : '/' },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -27,17 +27,5 @@ export class RegisterComponent implements OnInit {
           this.error = error;
         }
       );
-
-    /*
-    if( this.authService.isAuth() ){
-      this.router.navigate(['/login']);
-      alert('Thanks for registering! Please login to verify.');
-    }
-    else{
-      window.scrollTo(0, 0);
-      alert('Sorry, email was already taken! Please try again.');
-    }
-    */
   }
-
 }
