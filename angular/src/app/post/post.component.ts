@@ -4,7 +4,6 @@ import { Post } from '../post.interface';
 import { PostService } from '../post.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { Comment } from '../comment.interface';
 import { User } from '../user.interface';
 
 @Component({
@@ -20,9 +19,6 @@ export class PostComponent implements OnInit {
   editing =  false;
   editTitle = '';
   editBody = '';
-
-  viewComments = false;
-  // comments: Comment[];
 
   constructor(private postService: PostService, private router: Router, private authService: AuthService) {
     this.user_id = authService.getId();
@@ -71,11 +67,4 @@ export class PostComponent implements OnInit {
     );
   }
 
-  showComments(){
-    this.viewComments = true;
-  }
-
-  hideComments(){
-    this.viewComments = false;
-  }
 }
