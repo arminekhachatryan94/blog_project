@@ -18,5 +18,5 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 run `php artisan serve` to build build the project.
 
 ## Running unit tests
-Run `ng test` to execute the unit tests via [Karma]<https://karma-runner.github.io/1.0/index.html>.
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io/1.0/index.html).
 Run `phpunit` to execute the unit tests in php unit tests.
