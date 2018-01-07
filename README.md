@@ -2,6 +2,7 @@ Blog Project
 ===================
 COMP586<br />
 Full stack blog with Laravel, Angular 2, and MySQL db<br />
+that contains an MVC, SPA, foreign keys, ORM, authentication, authorization, unit testing, CRUD, and some SOLID principles.<br />
 
 ## Folders:
 * angular -> frontend
