@@ -2,46 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
-
 use App\Http\Requests\RegistrationForm;
 
 class RegistrationController extends Controller
 {
-    public function __construct(){
-        $this->middleware('guest');
-    }    
-    public function create(){
-    	return view('registration.create');
-    }
-
-    public function store(RegistrationForm $form ){
-    	// validate the form
-    	$this->validate(request(), [
-    		'name' => 'required',
-    		'email' => 'required|email',
-    		'password' => 'required|confirmed'
-    	]);
-
-    	// create & save user
-    	$user = User::create([
-            'name' => request('name'),
-            'email' => request('email'),
-            'password' => bcrypt(request('password'))
+    public function register(Request $request ){
+        $this->validate($request, [
+            'firstName' => 'required',
+            'lastName' => 'required',            
+            'email' => 'required|email|unique:users',
+            'password' => 'required'
         ]);
 
-    	// sign them in
-    	auth()->login($user);
+        $user = new User([
+            'firstName' => $request->input('firstName'),
+            'lastName' => $request->input('lastName'),            
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password'))
+        ]);
 
-        // \Mail::to($user)->send(new Welcome($user));
+        $user->save();
 
-        // $form->persist();
-
-        // session();
-        // request()->session();
-        session()->flash('message', 'Thanks so muhc for signing up');
-
-    	// redirect to home page
-    	return redirect()->home();
+        return response()->json([
+            'message' => 'Successfully created user!'
+        ], 201);
     }
 }

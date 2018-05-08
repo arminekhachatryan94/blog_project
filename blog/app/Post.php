@@ -3,25 +3,32 @@
 namespace App;
 
 use App\Tag;
-use Carbon\Carbon;
+use App\Comment;
+// use Carbon\Carbon;
+// use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model {
+    protected $fillable = [
+        'title', 'body'
+    ];
+    
 	public function comments() {
-    	return $this->hasMany(Comment::class);
+    	return $this->hasMany(Comment::class)->latest();
     }
 
     public function user() { // $post->user
         return $this->belongsTo(User::class);
     }
-
+    
+    /*
     public function addComment($body){    	
     	$this->comments()->create(compact('body'));
-    	/*
-    	Comment::create([
-    		'body' => $body,
-    		'post_id' => $this->id
-    	]);
-    	*/
+    	
+    	//Comment::create([
+    	//	'body' => $body,
+    	//	'post_id' => $this->id
+    	//]);
+    	
     }
 
     // query scope
@@ -46,4 +53,5 @@ class Post extends Model {
     public function tags(){
         return $this->belongsToMany(Tag::class);
     }
+    */
 }

@@ -1,0 +1,47 @@
+<nav class="navig container-fluid" style="background-color: #0099ff; ">  
+  <div class="row h4" style="display:inline;">
+      <div class="col-md-8 text-left">
+          <!-- left -->
+          <a [routerLink]= "['/']" class="h1 text-white" style="padding:10px;">iBlog</a>
+          
+          <a [routerLink]= "['/']" class="text-white" style="padding:10px;">
+              <span class="glyphicon glyphicon-home"></span>
+              Home
+          </a>
+          
+          <a [routerLink]= "['/']" class="text-white" style="padding:10px;">
+              <span class="glyphicon glyphicon-book"></span>
+              Posts
+          </a>
+
+          <a *ngIf="authService.isAuth()" [routerLink]= "['/new-post']" class="text-white" style="padding:10px;">
+              <span class="glyphicon glyphicon-send"></span>
+              Create
+          </a>
+      </div>
+      <div class="col-md-4 text-right">
+          <a *ngIf="authService.isAuth()" class="text-white" style="padding:10px;">
+              {{ firstName }} {{ lastName }}
+          </a>
+
+          <!--a *ngIf="authService.isAuth()" [routerLink]="['/settings']" class="text-white" style="padding:10px;">
+              <span class="glyphicon glyphicon-cog"></span>
+          </a-->
+
+          <a *ngIf="!authService.isAuth()" [routerLink]= "['/register']" class="text-white" style="padding:10px;">
+              <span class="glyphicon glyphicon-log-out"></span>
+              Register
+          </a>
+
+          <a *ngIf="!authService.isAuth()" [routerLink]= "['/login']" class="text-white" style="padding:10px;">
+              <span class="glyphicon glyphicon-log-out"></span>
+              Login
+          </a>
+
+          <a *ngIf="authService.isAuth()" [routerLink]= "['/login']" (click)="logout()" class="text-white" style="padding:10px;">
+              <span class="glyphicon glyphicon-log-out"></span>
+              Logout
+          </a>
+      </div>
+  </div>
+</nav>

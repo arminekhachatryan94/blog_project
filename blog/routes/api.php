@@ -13,6 +13,67 @@ use Illuminate\Http\Request;
 |
 */
 
+/*
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+*/
+
+Route::get('/', [
+	'uses'=>'PostsController@getAllPosts'
+]);
+Route::get('/posts', [
+	'uses'=>'PostsController@getAllPosts'
+]);
+Route::post('/post', [
+	'uses'=>'PostsController@createPost',
+	'middleware' => 'auth.jwt'
+]);
+Route::get('/posts/{post}', [
+	'uses'=>'PostsController@getOnePost'
+]);
+Route::put('/posts/{post}', [
+	'uses'=>'PostsController@editPost',
+	'middleware' => 'auth.jwt'
+]);
+Route::delete('/posts/{post}', [
+	'uses'=>'PostsController@deletePost',
+	'middleware' => 'auth.jwt'
+]);
+
+/*
+// tags
+Route::get('/posts/tags/{tag}', 'TagsController@index');
+
+// comments
+Route::post('/posts/{post}/comments', 'CommentsController@store');
+*/
+
+
+// register
+// Route::get('/register', 'RegistrationController@create');
+Route::post('/register', 'RegistrationController@register');
+
+
+// login
+// Route::get('/login', 'SessionsController@create');
+Route::post('/login', 'SessionsController@loginUser');
+Route::post('/logout', 'SessionsController@destroy');
+
+
+/*
+// settings
+Route::get('/settings', 'SettingsController@getInfo');
+Route::post('/settings/name', 'SettingsController@name');
+Route::post('/settings/email', 'SettingsController@email');
+Route::post('/settings/password', 'SettingsController@password');
+*/
+
+
+/*
+post -- create new
+get -- retrieve info from db
+put -- edit / replace old resource with new content
+delete -- delete
+patch -- update only a part of old resource
+*/

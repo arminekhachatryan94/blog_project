@@ -3,37 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use JWTAuth;
+use Auth;
 
 class SessionsController extends Controller
 {
-	public function __construct(){
-		// $this->middleware('guest')->except('destroy');
-		$this->middleware('guest', ['except' => 'destroy']);
-        // return redirect('/');
-	}
+    public function loginUser(Request $request){
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
-    public function create(){
-    	return view('sessions.create');
-    }
+        $credentials = $request->only('email', 'password');
+        try {
+            if( !$token = JWTAuth::attempt($credentials)){
+                return response()->json([
+                    'error' => 'Invalid Credentials!'
+                ], 401);
+            }
+        } catch(JWTException $e){
+            return response()->json([
+                'error' => 'Could not create token!'
+            ], 500);
+        }
 
-    public function store(){
-    	// attempt to authenticate the user
-    	if( ! auth()->attempt(request(['email', 'password'])) ){
-    		return back()->withErrors([
-    			'message' => 'Please check your credentials and try again.'
-    		]);
-    	}
-
-    	// if not, redirect back
-
-    	// if so, sign them in
-    	return redirect()->home();
-    	// redirect to home page
-    }
-
-    public function destroy(){
-    	auth()->logout();
-
-    	return redirect()->home();
+        return response()->json([
+            'token' => $token,
+            'user_id' => Auth::user()->id,
+            'firstName' => Auth::user()->firstName,
+            'lastName' => Auth::user()->lastName            
+        ], 201);
     }
 }
